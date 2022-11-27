@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt,twoside]{extreport}
+
+\usepackage[center]{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\usepackage{changepage}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[nottoc]{tocbibind}
+\usepackage{listings}
+
+% set margins
+\geometry{a4paper,top=25mm,inner=35mm,outer=25mm,bottom=25mm}
+
+% set leading to 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% change bullet points to dashes
+\renewcommand\labelitemi{---}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% bibliography
+\usepackage{csquotes}
+\usepackage[style=numeric,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{hyperref}
+
+% algorithms and list of algorithms
+\DeclareCaptionType{code}[Algorithm][Spis algorytmów]
+\lstset{breaklines=true,basicstyle=\ttfamily\scriptsize}
+
+% figures and list of figures
+\graphicspath{{./img/}}
+
+% tables
+\floatstyle{plaintop}
+\restylefloat{table}
+
+% other
+% custom command for printing a date in the format dd.mm.yyyy
+\def\mydate{\leavevmode\hbox{\the\day.\twodigits\month.\twodigits\year}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+
+\title{Aplikacja webowa do zarządzania informacjami o telefonach komórkowych.}
+\author{Piotr Tomczak}
+\date{\L{}\'od\'z, \mydate}
+
+% header and footer
+% \pagestyle{fancy}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+% main text
+\begin{document}
+
+% title page
+\input{titlepage}
+
+\pagenumbering{gobble}
+\pagenumbering{roman}
+\thispagestyle{plain}
+
+\tableofcontents
+\pagenumbering{arabic}
+
+\chapter{Wstęp}
+\input{chapters/chapter1}
+
+\chapter{Przegląd istniejących aplikacji webowych o telefonach}
+\input{chapters/chapter2}
+
+\chapter{Projekt aplikacji webowej}
+\input{chapters/chapter3}
+
+\chapter{Testowanie aplikacji}
+\input{chapters/chapter4}
+
+\chapter{Podsumowanie i wnioski}
+\input{chapters/chapter5}
+
+
+\printbibliography
+
+\newpage
+\listoffigures
+
+\newpage
+\listofcodes
+
+\newpage
+\listoftables
+
+\appendix
+\chapter{Akronimy i symbole}
+\input{chapters/appendix_acronyms}
+
+\end{document}

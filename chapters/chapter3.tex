@@ -1,0 +1,61 @@
+\section{Założenia projektowe}
+W tym rozdziale zostały wszystkie wymagania dotyczące aplikacji. Aplikacja posiada funkcjonalności i założenia, które są zawarte w rozdziale \ref{ideal_solution}. 
+\subsection{Wymagania funkcjonalne}
+\subsubsection{Użytkownik niezalogowany}
+\begin{enumerate}
+    \item Użytkownik posiada możliwość zalogowania się za pomocą e-maila i hasła.
+    \item Użytkownik posiada możliwość przeglądania oraz sortowania marek telefonów komórkowych.
+    \item Użytkownik posiada możliwość przeglądania oraz sortowania telefonów komórkowych.
+    \item Użytkownik posiada możliwość przeglądania najnowszych postów z forum.
+    \item Użytkownik posiada możliwość porównywania maksymalnie trzech urządzeń znajdujących się na stronie.
+    \item Użytkownik posiada możliwość przeglądania cen dla wybranego modelu telefonu komórkowego.
+\end{enumerate}
+\subsubsection{Użytkownik zalogowany}
+\begin{enumerate}
+    \item Użytkownik zalogowany musi mieć możliwość wykonywania wszystkich czynności użytkownika niezalogowanego.
+    \item Użytkownik posiada możliwość weryfikacji adresu mail.
+    \item Użytkownik posiada możliwość edycji, dodawania swojego aktualnego telefonu.
+    \item Użytkownik posiada możliwość edycji swojego profilu.
+    \item Użytkownik posiada możliwość dodawania, edycji oraz usuwania swoich postów.
+    \item Użytkownik posiada możliwość przeglądania oraz sortowania swoich postów.
+    \item Użytkownik posiada możliwość reagowania na posty.
+    \item Użytkownik posiada możliwość przeglądania oraz dodawania opinii dotyczących urządzeń.
+\end{enumerate}
+
+\subsection{Wymagania niefunkcjonalne}
+\begin{enumerate}
+    \item System łączy się z zewnętrznym serwisem (API GSM Arena) w celu pozyskania danych dotyczących telefonów komórkowych.
+    \item System ma możliwość zapisywania i odczytywania danych znajdujących się w bazie danych.
+    \item System musi przechowywać dane na temat użytkownika, tworzącego opinie dotyczące urządzeń.
+\end{enumerate}
+
+\subsection{Użyte technologie}
+\subsubsection{Frontend}
+Część frontendowa została zbudowana w oparciu o język TypeScript \cite{TypeScript}. TypeScript jest to język opracowany przez firmę Microsoft, który pozwala na wprowadzenie statycznego typowania do JavaScripta. Wadą tego języka jest kompilowanie go do JavaScriptu, co wydłuża czas budowania aplikacji. Dodatkowo, dzięki typom i integracji IDE występuje możliwość lepszego podpowiadania, jakie własności posiada dany obiekt.
+Język ten został wybrany ze względu na tworzenia własnych typów, aby móc odwzorować typy, które zostały zdefiniowane w projekcie. Dzięki stworzonym typom, usprawnia pracę programisty oraz zwiększa czytelność kodu. 
+
+W warstwy widoku została zastosowana biblioteka React \cite{React}. React jest to biblioteka do warstwy widoku, która pozwala na tworzenie komponentów w celu zbudowania widoku. Biblioteka ta charakteryzuje się dużą wydajnością dzięki zastosowania mechanizmu Virtual DOM, który pozwala na szybsze porównywanie zmian pomiędzy faktycznymi elementami na stronie. Pozwala ona na tworzenie komponentów, które będziemy mogli wielokrotnie używać danego komponentu w wielu miejscach strony. Do poruszania się po stronie w projekcie została użyta biblioteka React router \cite{react_router}, która umożliwia na zdefiniowanie podstron oraz nawigację pomiędzy nimi. Do umieszczania powiadomień na stronie została użyta biblioteka react toastify \cite{react_toastify}.
+
+Wykorzystaną biblioteką z komponentami UI jest React Boostrap. Biblioteka ta pozwala na użycie gotowych komponentów, które zostały stylowane przez twórców frameworka CSS Bootstrapa. Framework ten jest standardem dla aplikacji webowych, co spowodowało zbudowanie wielu innych frameworków opartych na Bootstrapie. jest dużo Ta biblioteka została wybrana ze względu, na prostotę jej użycia oraz wyglądu komponentów. 
+
+\subsubsection{Backend}
+Część backendowa została oparta na języku interpretowanym Python \cite{python}. Python jest to język opracowywany przez Python Software Foundation \cite{psf}, który pozwala na tworzenie aplikacji webowych czy prowadzenia analiz statystycznych. Język ten jest uniwersalny, dzięki któremu mamy możliwość zbudowania aplikacji webowych, konsolowych czy tworzenia sieci neuronowych. Wadą tego języka jest jego wydajność, wynika to z faktu działania interpretera, który musi przekonwertować program na kod bajtowy, który następnie jest odczytywany i uruchamiany na maszynie wirtualnej Python'a. Zaletą tego języka jest łatwość budowania aplikacji webowych wraz z składnią języka i systemem wcięć. Do projektu został wybrany za jego prostotę użycia wraz z możliwością do analizy statystycznej.
+
+Frameworkiem, który został użyty do zbudowania API jest jeden z najpopularniejszych frameworków Flask \cite{flask}. Flask jest to framework, cechującym się dużą wydajnością. Posiada on dużą możliwość rozbudowy poprzez pluginy, dzięki którym mamy możliwość łączenia się z bazami danych czy umożliwieniem autoryzacji. W tym projekcie Flask, został rozszerzony o bibliotekę Flask-APScheduler \cite{flask_apscheduler}. Plugin ten pozwala na zaplanowanie czynności w czasie, dzięki czemu jest możliwe cogodzinne wpisywanie danych telefonów do bazy danych. API pozwala na autoryzację użytkowników przy pomocy Firebase \cite{firebase}, dodawaniem zdjęć do Cloud Storage \cite{cloud_storage} i dodawaniem urządzeń użytkownika oraz postów do bazy danych Firestore \cite{firestore}. Flask został wybrany do projektu ze względu na możliwość związaną z rozszerzaniami oraz wydajność.
+
+\subsection{Użyte narzędzia CI [\ref{CI}] i CD [\ref{CD}]}
+W projekcie zdecydowałem się na użycie trzech narzędzi CI/CD. Ze względu na rozdzielenie części frontendowej i backendowej na dwa repozytoria, pozwoliło to na łatwiejsze zastosowanie Github Actions. Github Actions \cite{github_actions} jest to funkcja, które pozwala na przeprowadzenie testów, zbudowanie i wdrożenie aplikacji do publicznego użycia. Dzięki tej funkcji jesteśmy w stanie sprawdzać stan budowania aplikacji czy zobaczyć raport wykonania testów.
+
+Dla części backendowej został stworzony akcja za pomocą Github Actions, której zadaniem jest wdrożenie aplikacji na hosting render \cite{render}. Jest to jeden z wiodących hostingów, dla aplikacji webowych stworzonych w języku Python. Wadą tego serwisu jest współdzielenie mocy obliczeniowej na darmowym poziomie subskrypcji. Zaletą tego hostingu jest integracja z Githubem, dzięki czemu za pomocą jednego kliknięcia mamy dostęp do kodu aplikacji.
+
+Dla repozytorium z częścią frontendowa wykonano integrację z hostingiem Vercel. Vercel \cite{vercel} jest to hosting, który pozwala na wprowadzenie aplikacji frontendowych. Hosting ten charakteryzuje się dużą ilością szablonów dzięki któremu nie martwimy się o specjalną konfigurację dla danej aplikacji. Kolejną możliwością tego hostingu jest darmowe przypisanie własnych domen, co jest jednocześnie wadą. Posiadając darmową subskrypcję jesteśmy ograniczeni do domen kończońcych się na \textit{vercel.app} Hosting ten posiada integrację z wieloma systemami kontroli wersji: Github, Gitlab czy Bitbucket. Dodatkową opcją jest optymalizacja zdjęć, która posiada hosting, co pozwala na ograniczeniu pobierania obrazów na stronie.
+
+\section{Architektura aplikacji}
+
+\subsection{Źródła danych}
+
+\subsection{Schemat bazy danych}
+
+\subsection{Schemat modułów aplikacji}
+
+\subsection{Zastosowane techniki pozyskiwania informacji}

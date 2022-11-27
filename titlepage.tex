@@ -1,0 +1,80 @@
+% \normalsize = 12pt
+% \large      = 14pt
+% \fontsize{18pt}{22pt}\selectfont = 18pt
+\definecolor{politechniczny}{RGB}{139, 0, 2}
+
+\renewcommand{\baselinestretch}{1.0}
+{\newgeometry{top=2.2cm,bottom=2.2cm,right=0.83cm,left=3.47cm} % use this geometry if you don't need additional margin for the binding
+\newgeometry{top=2.2cm,bottom=2.2cm,right=0.83cm,left=4.47cm} % use this geometry for the proper binding
+\begin{titlepage}
+
+%
+\tikz [remember picture, overlay] %
+\node [shift={(1.635cm,-0.75cm)}] at (current page.north west) %
+[anchor=north west, inner sep=0pt, outer sep=0pt] %
+{\includegraphics[height=3.49cm, width=2.2cm]{img/pl_logo.png}};
+
+\tikz [remember picture, overlay]
+\node [shift={(1.635cm,-4.25cm)}] at (current page.north west) %
+[anchor=north west, inner sep=0pt, outer sep=0pt] %
+{\includegraphics[height=24.6cm, width=2.2cm]{img/pl_left_img.png}};
+%
+    \begin{adjustwidth}{0cm}{0pt}
+    \begin{flushleft}
+        \vspace*{-0.35cm}
+        {\fontfamily{phv}\selectfont\Large
+        Politechnika \L{}\'odzka}
+        
+        {\fontfamily{phv}\selectfont\normalsize
+        \textcolor{politechniczny}{Instytut Informatyki}}
+    \end{flushleft}
+    \end{adjustwidth}
+    
+    \begin{center}
+        \vspace*{1.53cm}
+        {\fontfamily{phv}\selectfont\large
+        \uppercase{\textbf{Praca dyplomowa in\.zynierska}}
+        
+        \vspace*{5.1cm}
+        
+        \fontsize{18pt}{22pt}\selectfont
+        \textbf{\thetitle}}
+        
+        \vfill
+    \end{center}
+    
+    {\fontfamily{ptm}\selectfont\normalsize
+    \begin{adjustwidth}{1cm}{0pt}
+    \begin{flushleft}
+        \textbf{Wydział Fizyki Technicznej, Informatyki i Matematyki Stosowanej}\\
+        \textbf{Promotor: dr inż. Joanna Ochelska-Mierzejewska}\\
+        \textbf{Dyplomant: Piotr Tomczak}\\
+        \textbf{Numer albumu: 230025}\\
+        \textbf{Kierunek: Informatyka Stosowana}\\
+        \textbf{Specjalność: Inżynieria Oprogramowania i Analiza Danych}
+    \end{flushleft}
+    \end{adjustwidth}
+    
+    \begin{center}
+        \thedate
+        \vspace*{2.05cm}
+    \end{center}}
+    
+    \begin{adjustwidth}{0cm}{0pt}
+    \begin{flushleft}
+        {\fontfamily{phv}\selectfont\footnotesize
+        \textcolor{politechniczny}{Instytut Informatyki}}
+        
+        \vspace*{0.1cm}
+        
+        {\fontfamily{phv}\selectfont\tiny
+        90-924 \L{}\'od\'z, ul. W\'olcza\'nska 215, \textcolor{politechniczny}{budynek B9}
+        
+        \vspace*{-0.5cm}
+        
+        tel. 042 631 27 97, 042 632 97 57, fax 042 630 34 14 email: office@ics.p.lodz.pl}
+        \vspace{-1.4cm}
+    \end{flushleft}
+    \end{adjustwidth}
+\end{titlepage}}
+\renewcommand{\baselinestretch}{1.5}
