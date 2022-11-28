@@ -51,10 +51,20 @@ Dla części backendowej został stworzony akcja za pomocą Github Actions, któ
 Dla repozytorium z częścią frontendowa wykonano integrację z hostingiem Vercel. Vercel \cite{vercel} jest to hosting, który pozwala na wprowadzenie aplikacji frontendowych. Hosting ten charakteryzuje się dużą ilością szablonów dzięki któremu nie martwimy się o specjalną konfigurację dla danej aplikacji. Kolejną możliwością tego hostingu jest darmowe przypisanie własnych domen, co jest jednocześnie wadą. Posiadając darmową subskrypcję jesteśmy ograniczeni do domen kończących się na \textit{vercel.app} Hosting ten posiada integrację z wieloma systemami kontroli wersji: Github, Gitlab czy Bitbucket. Dodatkową opcją jest optymalizacja zdjęć, która posiada hosting, co pozwala na ograniczeniu pobierania obrazów na stronie.
 
 \section{Architektura aplikacji}
+W tej sekcji znajdują się opisane jak zostały podzielone moduły aplikacji zarówno części frontendowej oraz backendowej. Opisane także zostały wybrane źródła danych, które zostały wykorzystane w projekcie. Zawarty został również opis wraz z diagramem encji.
 
-\subsection{Źródła danych}
+\subsection{Źródła danych}\label{data_sources}
+W projekcie zostały wybrane dwa źródła danych. Zostały one wybrane także, ze względu na ich wysoką dostępność w internecie. Podstawowym źródłem danych jest GSM Arena API, dzięki czemu mogliśmy uzyskać dane dotyczące telefonów komórkowych. Dodatkowym źródłem danych są serwisy aukcyjne, które dostarczają aktualne ceny telefonów komórkowych.
 
-\subsection{Schemat bazy danych}
+\subsubsection{Źródło danych o telefonach}
+Źródłem danych o telefonach jest GSM Arena API \cite{gsm_arena_api}, stworzone przez Kyaw Htut. Dostarcza one dane dotyczące urządzeń znajdujących się na portalu GSM Arena \cite{gsm_arena}. API wykorzystuję metodę Web Scraping, dzięki któremu otrzymujemy dane w formacie JSON.
+
+Wadą tego rozwiązania jest umieszczenie skryptu na serwisie Google App Script \cite{google_app_script}. Zostało to wymuszone, z powodu dodatkowej biblioteki Cheerio, które wykorzystuję API. Dodatkowo Google App Script posiada ograniczoną liczbę możliwych wywołań API. Warto zaznaczyć, że API nie jest oficjalnie udostępnione przez GSM Arena, dlatego nie jestem w stanie zapewnić, że będzie ono działało w przyszłości. Sam autor dostarcza pełną dokumentację API za pomocą programu Postman. W dokumentacji \cite{gsm_arena_api_reference} zostały zawarte przykładowe żądania, co pozwala na łatwe wykorzystanie API.
+
+\subsubsection{Serwisy aukcyjne}
+Drugim źródłem danych są serwisy aukcyjne. W projekcie zostały wykorzystane serwisy jak: Amazon, Ebay, AliExpress oraz sklepy producentów. 
+
+\subsection{Wybrana baza danych}
 
 \subsection{Schemat modułów aplikacji}
 
