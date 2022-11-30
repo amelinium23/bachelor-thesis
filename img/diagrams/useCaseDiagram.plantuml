@@ -1,0 +1,41 @@
+@startuml useCaseDiagram
+
+skinparam actorStyle awesome
+left to right direction
+
+actor "Użytkownik" as User
+
+usecase "Logowanie za pomocą emaila i hasła" as UC1
+usecase "Rejestracja za pomocą emaila i hasła" as UC2
+usecase "Przeglądanie listy telefonów" as UC3
+usecase "Przeglądanie szczegółów telefonu" as UC4
+usecase "Przeglądanie listy producentów" as UC5
+usecase "Wyświetlanie listy najnowszych postów" as UC6
+usecase "Tworzenie postów" as UC7
+usecase "Przeglądanie postów" as UC8
+usecase "Dodawanie, edycja i usuwanie postów" as UC9
+usecase "Dodawanie, edycja i usuwanie komentarzy" as UC10
+usecase "Sortowanie listy telefonów" as UC11
+usecase "Sortowanie listy producentów" as UC12
+usecase "Sprawdzenie ceny telefonu" as UC13
+usecase "Proponowanie ceny telefonu" as UC14
+usecase "Dodawanie, edycja i usuwanie opinii" as UC15
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC8
+User --> UC11
+User --> UC12
+User --> UC13
+User --> UC14
+
+UC1 --|> UC7
+UC1 --|> UC9
+UC1 --|> UC10
+UC1 --|> UC15
+
+@enduml

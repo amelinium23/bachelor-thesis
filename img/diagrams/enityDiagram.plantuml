@@ -1,0 +1,55 @@
+@startuml entityDiagram
+
+left to right direction
+
+entity User {
+  * uid: string <<generated>>
+  * email: string
+  ---
+  display_name: string
+  photo_url: string
+  device: Device
+}
+
+entity Post {
+  * title: string
+  * description: string
+  * user: User
+  * id: string
+  ---
+  type: string
+  device_key: string
+  votes: int
+  images: string[]
+  comments: Comment[]
+}
+
+entity Comment {
+  * user: User
+  ---
+  id: string
+  votes: int
+  comment: string
+}
+
+entity Device {
+  * device_id: int
+  * key: string
+  ---
+  device_name: string
+  device_type: string
+  device_image: string
+}
+
+entity Brand {
+  * brand_id: int
+  * key: string
+  ---
+  brand_name: string
+}
+
+Device ||--|| User
+User }|-- Post
+Post }|-- Comment
+
+@enduml

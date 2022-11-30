@@ -29,6 +29,16 @@ W tym rozdziale zostały zawarte wszystkie wymagania funkcjonalne oraz niefunkcj
     \item System musi przechowywać dane na temat użytkownika, tworzącego opinie dotyczące urządzeń.
 \end{enumerate}
 
+\newpage
+Na rysunku \ref*{use_case} zostały przedstawione przypadki użycia aplikacji.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.41]{diagrams/useCaseDiagram.png}
+    \caption{Diagram przypadków użycia}
+    \label{use_case}
+\end{figure}
+
+
 \subsection{Użyte technologie}
 \subsubsection{Frontend}
 Część frontendowa została zbudowana w oparciu o język TypeScript \cite{TypeScript}. TypeScript jest to język opracowany przez firmę Microsoft, który pozwala na wprowadzenie statycznego typowania do JavaScript. Wadą tego języka jest kompilowanie go do JavaScriptu, co wydłuża czas budowania aplikacji. Dodatkowo, dzięki typom i integracji IDE występuje możliwość lepszego podpowiadania, jakie własności posiada dany obiekt.
@@ -62,10 +72,58 @@ W projekcie zostały wybrane dwa źródła danych. Zostały one wybrane także, 
 Wadą tego rozwiązania jest umieszczenie skryptu na serwisie Google App Script \cite{google_app_script}. Zostało to wymuszone, z powodu dodatkowej biblioteki Cheerio, które wykorzystuję API. Dodatkowo Google App Script posiada ograniczoną liczbę możliwych wywołań API. Warto zaznaczyć, że API nie jest oficjalnie udostępnione przez GSM Arena, dlatego nie jestem w stanie zapewnić, że będzie ono działało w przyszłości. Sam autor dostarcza pełną dokumentację API za pomocą programu Postman. W dokumentacji \cite{gsm_arena_api_reference} zostały zawarte przykładowe żądania, co pozwala na łatwe wykorzystanie API.
 
 \subsubsection{Serwisy aukcyjne}
-Drugim źródłem danych są serwisy aukcyjne. W projekcie zostały wykorzystane serwisy jak: Amazon, Ebay, AliExpress oraz sklepy producentów. 
+Drugim źródłem danych są serwisy aukcyjne. W projekcie zostały wykorzystane serwisy jak: Amazon, Ebay, AliExpress oraz sklepy producentów. Te dane zostały udostępnione w API Gsm Areny, nie było więc konieczności ich pobierania z serwisów.
+
+Początkowo w projekcie, miały znaleźć się dane serwisów zagranicznych miały zostać rozszerzone o dane z polskich serwisów aukcyjnych takich jak: Allegro, Olx, Skąpiec czy Ceneo. Serwisy te, aby pobrać dane, pobierają dodatkową opłatę, co więcej należy spełnić ich warunki, aby móc korzystać z API.
+
+W przypadku serwisu Allegro, należy być w programie partnerskim oraz aplikacja w Allegro musi być zweryfikowana. Weryfikacja odbywa się po skontaktowaniu się z Allegro. Aby otrzymać weryfikację, należy mieć 100 aktywnych użytkowników, zarejestrowanych w aplikacji oraz być w programie partnerskim. Na rysunku \ref*{allegro_verification} została przedstawione warunki weryfikacji aplikacji.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{responses/allegro_response.png}
+    \caption{Odpowiedź Allegro na prośbę o weryfikację aplikacji}
+    \label{allegro_verification}
+\end{figure}
+
+Zatem integracja z tym serwisem nie była możliwa. Podobny sposób działania mają także serwisy Skąpiec \cite{skapiec} i Ceneo \cite{ceneo}. Również wymagają dołączenie do programu partnerskiego, aby móc pobierać oferty z serwisu.
+
+Innym przypadkiem jest serwis OLX. Ten serwis nie udostępnia możliwości pobierania ofert publicznych, a jedynie ofert zalogowanego użytkownika. Na rysunku \ref*{olx_response} została przedstawiona odpowiedź serwisu na prośbę o udostępnienie API.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.58]{responses/olx_response.png}
+    \caption{Odpowiedź Allegro na prośbę o weryfikację aplikacji}
+    \label{olx_response}
+\end{figure}
+
+W rezultacie, w projekcie zostały jedyne dane z serwisów aukcyjnych, które nie wymagały dodatkowej weryfikacji czy też opłaty.
 
 \subsection{Wybrana baza danych}
+W projekcie została wykorzystana NoSQL \cite{NoSQL} baza danych Firestore \cite{firestore}. Baza ta została zbudowana w paradygmacie dokumentowym, co pozwala na łatwe zapisywanie danych. Zaletą takiego rozwiązania jest brak określenia dokładnej struktury danych. W przypadku zmiany typu danego pola, nie musimy przeprowadzać migracji bazy danych, tylko możemy dowolnie zmienić strukturę danych. W przypadku tego projektu jest to dobre rozwiązanie, ze względu na pobieranie danych z zewnętrznych źródeł, które mogą się zmieniać.
+
+Dzięki paradygmatowi dokumentowemu, baza danych została podzielona na kolekcję:
+\begin{enumerate}
+    \item \textit{brands} - przechowuje dane o producentach telefonów. Kolekcja, ta została stworzona, jako kopia zapasowa danych, pobieranych z GSM Areny. W przypadku, gdyby serwis nie był dostępny, można by w łatwy sposób zastąpić dane z bazy danych. Zawiera ona jeden dokument, który składa się z listy producentów, wraz z ich nazwą i identyfikatorem.
+    \item \textit{devices} - przechowuje dane o telefonach. Tak samo jak w przypadku producentów, należy także synchronizować dane wraz z producentami pobranymi z GSM Areny. Zawiera jeden dokument, który składa się z pogrupowanej listy telefonów, wraz z ich nazwą, identyfikatorem, zdjęciem w postaci linku oraz klucza, który pozwala otrzymać specyfikację danego urządzenia.
+    \item \textit{device} - przechowuje dane o telefonie użytkownika. Zawiera ona dokumenty, które są nazywane identyfikatorem użytkownika, w celu uniknięcia duplikacji danych. W dokumentach znajdują się dane o telefonie użytkownika, wraz z jego nazwą, zdjęciem oraz kluczem, który pozwala otrzymać specyfikację danego urządzenia.
+    \item \textit{opinions} - przechowuje opinie dotyczące danego urządzenia. Zawiera ona dokumenty, które są nazywane identyfikatorem urządzenia, w celu uniknięcia duplikacji danych. W dokumentach znajdują się dane o opinii, wraz z jej treścią, tytułem, identyfikatorem oraz informacją o użytkowniku, który wystawił daną opinie.
+    \item \textit{posts} - przechowuje posty użytkowników. Zawiera ona dokumenty, które są nazywane identyfikatorem użytkownika, w celu uniknięcia duplikacji danych. W dokumentach znajdują się dane o postach, wraz z treścią, tytułem, identyfikatorem, komentarzami oraz informacją o użytkowniku, który wystawił daną opinie. W przypadku, gdy użytkownik, wystawił prośbę o wycenę telefonu, wtedy użytkownik może dodać zdjęcia telefonu. W bazie są przechowywane jako linki, do zdjęć znajdujące się na Google Cloud Storage.
+\end{enumerate}
+
+W tej bazie można wyróżnić kilka struktur danych. Można postrzegać je jako encję w rozumieniu relacyjnej bazy danych. 
+Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.46]{diagrams/entityDiagram.png}
+    \caption{Schemat struktur danych w bazie danych}
+    \label{database}
+\end{figure}
 
 \subsection{Schemat modułów aplikacji}
+\subsubsection{Backend}
+
+\subsubsection{Frontend}
+
 
 \subsection{Zastosowane techniki pozyskiwania informacji}
