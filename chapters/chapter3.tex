@@ -85,14 +85,14 @@ W przypadku serwisu Allegro, należy być w programie partnerskim oraz aplikacja
     \label{allegro_verification}
 \end{figure}
 
-Zatem integracja z tym serwisem nie była możliwa. Podobny sposób działania mają także serwisy Skąpiec \cite{skapiec} i Ceneo \cite{ceneo}. Również wymagają dołączenie do programu partnerskiego, aby móc pobierać oferty z serwisu.
+Zatem integracja z tym serwisem nie była możliwa. Podobny sposób działania mają także serwisy Skąpiec \cite{skapiec} i Ceneo \cite{ceneo}. Również wymagają dołączenie do programu partnerskiego, przez co jest uniemożliwiony dostęp do ofert publiczny. Wymienione serwisy nie udostępniają danych dotyczących ofert publicznych, co uniemożliwia pobranie danych o cenach telefonów komórkowych.
 
 Innym przypadkiem jest serwis OLX. Ten serwis nie udostępnia możliwości pobierania ofert publicznych, a jedynie ofert zalogowanego użytkownika. Na rysunku \ref*{olx_response} została przedstawiona odpowiedź serwisu na prośbę o udostępnienie API.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.58]{responses/olx_response.png}
-    \caption{Odpowiedź Allegro na prośbę o weryfikację aplikacji}
+    \caption{Odpowiedź OLX na prośbę o weryfikację aplikacji}
     \label{olx_response}
 \end{figure}
 
@@ -120,8 +120,24 @@ Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych.
     \label{database}
 \end{figure}
 
-\subsection{Schemat modułów aplikacji}
+\subsection{Budowa aplikacji}
 \subsubsection{Backend}
+Backend został zbudowany w oparciu o moduły, występujące w języku Python \cite{python}. Pozwoliło to na łatwe podzielenie kodu na poszczególne moduły aplikacji. Poszczególne punkty końcowe API zostały zamknięte w odpowiednim pakiecie. W frameworku Flask \cite{flask}, występuje pojęcie \textit{Blueprint} \cite{flask_blueprint}. Koncept ten zakłada, że projekt można podzielić na pomniejsze aplikację, które mogą zostać wykorzystywane w wielu aplikację. Ze względu na taką architekturę, poprawia ona czytelność kodu, łatwość utrzymania oraz daje możliwość łatwego rozszerzenia aplikacji.
+
+W aplikacji każdy punkt końcowy posiada swój moduł, dzięki czemu można łatwo go zlokalizować. Zostały one nazwane prefiksami ścieżek do poszczególnych punktów końcowych. Przykładowo, punkt końcowy o nazwie \textit{user}, będzie zdefiniowany w folderze \textit{user}. W każdym pakiecie znajdą się podpakiety, gdzie można znaleźć definicję struktur danych (moduł \textit{model}), bądź dodatkowe funkcję pomocnicze funkcję (moduł \textit{utils}). Wyjątkiem w tej architekturze są dwa moduły: \textit{main} oraz \textit{docs}.
+
+Pakiet \textit{main} zawiera funkcję pozwalające na stworzenie aplikacji, klasę odpowiedzialną za konfigurację projektu oraz moduł, który pozwala na udostępnienie dostępu do serwisu Firebase, Firestore oraz Google Cloud Storage. W tym module znajdują się także szablony HTML, w których stworzona jest główna strona aplikacji oraz strony, które wyświetlą się w przypadku błędu serwera, bądź nie odnalezienia danego punktu końcowego. Dodatkowo zostały tam zdefiniowane funkcje, które są wykorzystywane do zadań przy użyciu Flask-APScheduler \cite{flask_apscheduler}.
+
+Natomiast moduł \textit{docs} zawiera dokumentację API, gdzie została stworzona szablon, którego zadaniem jest wyświetlenie wszystkich punków końcowych aplikacji. Tak samo jak moduł \textit{main}, zawiera on również szablony HTML. Zawiera on także, funkcję dzięki której możemy pobrać wszystkie możliwe punkty końcowe, znajdujące się w aplikacji.
+
+Na rysunku \ref{backend} przedstawiono schemat modułów aplikacji wraz z ich podmodułami.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{diagrams/backendModules.png}
+    \caption{Schemat modułów aplikacji}
+    \label{backend}
+\end{figure}
 
 \subsubsection{Frontend}
 
