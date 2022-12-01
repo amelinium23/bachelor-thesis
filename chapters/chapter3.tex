@@ -66,7 +66,7 @@ W tej sekcji znajdują się opisane jak zostały podzielone moduły aplikacji za
 \subsection{Źródła danych}\label{data_sources}
 W projekcie zostały wybrane dwa źródła danych. Zostały one wybrane także, ze względu na ich wysoką dostępność w internecie. Podstawowym źródłem danych jest GSM Arena API, dzięki czemu mogliśmy uzyskać dane dotyczące telefonów komórkowych. Dodatkowym źródłem danych są serwisy aukcyjne, które dostarczają aktualne ceny telefonów komórkowych.
 
-\subsubsection{Źródło danych o telefonach}
+\subsubsection{Źródło danych o telefonach}\label{api}
 Źródłem danych o telefonach jest GSM Arena API \cite{gsm_arena_api}, stworzone przez Kyaw Htut. Dostarcza one dane dotyczące urządzeń znajdujących się na portalu GSM Arena \cite{gsm_arena}. API wykorzystuję metodę Web Scraping, dzięki któremu otrzymujemy dane w formacie JSON.
 
 Wadą tego rozwiązania jest umieszczenie skryptu na serwisie Google App Script \cite{google_app_script}. Zostało to wymuszone, z powodu dodatkowej biblioteki Cheerio, które wykorzystuję API. Dodatkowo Google App Script posiada ograniczoną liczbę możliwych wywołań API. Warto zaznaczyć, że API nie jest oficjalnie udostępnione przez GSM Arena, dlatego nie jestem w stanie zapewnić, że będzie ono działało w przyszłości. Sam autor dostarcza pełną dokumentację API za pomocą programu Postman. W dokumentacji \cite{gsm_arena_api_reference} zostały zawarte przykładowe żądania, co pozwala na łatwe wykorzystanie API.
@@ -183,4 +183,11 @@ W projekcie także zostały skonfigurowano narzędzia, które pomagają w pracy 
 \end{enumerate}
 
 \subsection{Zastosowane techniki pozyskiwania informacji}
+W projekcie ze względu na powody, które zostały opisane w rozdziale \ref{data_sources}, jedynym źródłem informacji o telefonach komórkowych jest API GSM Areny. API zostało stworzenie w oparciu o metodę web scrapingu. Metoda ta pozwala, na pozyskanie informacji, ze strony internetowej. Dzięki udostępnieniu kodu źródłowego nieoficjalnego GSM Arena API\cite{gsm_arena_api}, możemy zauważyć, że została tam użyta web scrapingu.
+
+Web scraping \cite{web_scraping} jest to metoda automatyzująca, polegająca na pobieraniu dokumentów HTML \ref{HTML} z serwisów internetowych w celu pozyskania danych z dokumentu. Metoda ta zawiera dwa moduły: przeszukiwarkę (ang. \textit{crawler}) oraz tzw. skrobaczkę (ang. \textit{scraper}).
+
+Przeszukiwarka jest to algorytm, który w sposób automatyczny przeszukuje stronę w celu pozyskania informacji. W naszym przypadku, poszukujemy informacji o cenie danego telefonu, pozyskujemy także w ten sposób specyfikację ze stron GSM Areny \cite{gsm_arena}. W ten sposób możemy pozyskać informację, ze stron, które nie udostępniają swoich serwisów, do użytku publicznego. Następnie dane z przeszukiwarki są przekazywane do skrobaczki, która wyciąga z nich interesujące nas informacje.
+
+Skrobaczka jest to algorytm, który potrafi konwertować dane z postaci znaczników HTML \ref{HTML}, do postaci bardziej przyjaznej dla programisty. Można również rozszerzyć te dane o atrybuty znajdujące się w znacznikach. Tak zostały rozszerzone dane, dotyczące cen, poprzez dodanie hiperłączy do sklepów, gdzie można dane urządzenie kupić. W naszym przypadku, skrobaczka konwertuje dane z postaci znaczników HTML \ref{HTML}, do postaci JSON \ref{JSON}.
 
