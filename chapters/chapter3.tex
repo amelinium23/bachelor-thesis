@@ -110,8 +110,9 @@ Dzięki paradygmatowi dokumentowemu, baza danych została podzielona na kolekcj�
     \item \textit{posts} - przechowuje posty użytkowników. Zawiera ona dokumenty, które są nazywane identyfikatorem użytkownika, w celu uniknięcia duplikacji danych. W dokumentach znajdują się dane o postach, wraz z treścią, tytułem, identyfikatorem, komentarzami oraz informacją o użytkowniku, który wystawił daną opinie. W przypadku, gdy użytkownik, wystawił prośbę o wycenę telefonu, wtedy użytkownik może dodać zdjęcia telefonu. W bazie są przechowywane jako linki, do zdjęć znajdujące się na Google Cloud Storage.
 \end{enumerate}
 
-W tej bazie można wyróżnić kilka struktur danych. Można postrzegać je jako encję w rozumieniu relacyjnej bazy danych. 
-Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych.
+W tej bazie można wyróżnić kilka struktur danych. Struktury te są słownikami klucz-wartość, co pozwala na szybsze zmianę oraz  wpisywanie danych. W przypadku dodawania nowych kluczy, nie musimy przeprowadzać migracji bazy danych, co pozwala na dowolne zmiany struktury danych.
+
+Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych oraz ich zależności pomiędzy nimi.
 
 \begin{figure}[H]
     \centering
@@ -124,7 +125,7 @@ Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych.
 \subsubsection{Backend}
 Backend został zbudowany w oparciu o moduły, występujące w języku Python \cite{python}. Pozwoliło to na łatwe podzielenie kodu na poszczególne moduły aplikacji. Poszczególne punkty końcowe API zostały zamknięte w odpowiednim pakiecie. W frameworku Flask \cite{flask}, występuje pojęcie \textit{Blueprint} \cite{flask_blueprint}. Koncept ten zakłada, że projekt można podzielić na pomniejsze aplikację, które mogą zostać wykorzystywane w wielu aplikację. Ze względu na taką architekturę, poprawia ona czytelność kodu, łatwość utrzymania oraz daje możliwość łatwego rozszerzenia aplikacji.
 
-W aplikacji każdy punkt końcowy posiada swój moduł, dzięki czemu można łatwo go zlokalizować. Zostały one nazwane prefiksami ścieżek do poszczególnych punktów końcowych. Przykładowo, punkt końcowy o nazwie \textit{user}, będzie zdefiniowany w folderze \textit{user}. W każdym pakiecie znajdą się podpakiety, gdzie można znaleźć definicję struktur danych (moduł \textit{model}), bądź dodatkowe funkcję pomocnicze funkcję (moduł \textit{utils}). Wyjątkiem w tej architekturze są dwa moduły: \textit{main} oraz \textit{docs}.
+W aplikacji każdy punkt końcowy posiada swój pakiet, dzięki czemu można łatwo go zlokalizować. Zostały one nazwane prefiksami ścieżek do poszczególnych punktów końcowych. Przykładowo, punkt końcowy o nazwie \textit{user}, będzie zdefiniowany w folderze \textit{user}. W każdym pakiecie znajdą się podpakiety, gdzie można znaleźć definicję struktur danych (pakiet \textit{model}), bądź dodatkowe funkcję pomocnicze funkcję (pakiet \textit{utils}). Wyjątkiem w tej architekturze są dwa pakiety: \textit{main} oraz \textit{docs}.
 
 Pakiet \textit{main} zawiera funkcję pozwalające na stworzenie aplikacji, klasę odpowiedzialną za konfigurację projektu oraz moduł, który pozwala na udostępnienie dostępu do serwisu Firebase, Firestore oraz Google Cloud Storage. W tym module znajdują się także szablony HTML, w których stworzona jest główna strona aplikacji oraz strony, które wyświetlą się w przypadku błędu serwera, bądź nie odnalezienia danego punktu końcowego. Dodatkowo zostały tam zdefiniowane funkcje, które są wykorzystywane do zadań przy użyciu Flask-APScheduler \cite{flask_apscheduler}.
 
@@ -139,7 +140,47 @@ Na rysunku \ref{backend} przedstawiono schemat modułów aplikacji wraz z ich po
     \label{backend}
 \end{figure}
 
-\subsubsection{Frontend}
+W aplikacji zostały skonfigurowane narzędzie, pomagające w pomagają w pracy przy projekcie. Pakiety potrzebne do uruchomienia aplikacji zostały zainstalowane w wirtualnym środowisku. Zostało to uzyskane za pomocą pakietu \textit{virtualenv} \cite{virtualenv}. Pozwala to na uruchamianie kodu, na zdefiniowanym przez nas środowisku. Umożliwia to także testowanie w środowisku testowym z minimalnymi wymaganiami. 
 
+Wszystkie narzędzia zostały zainstalowane za pomocą menadżera pakietów Pythona \textit{pip} \cite{pip}. W celu poprawienia jakości kodu, zostały zastosowane narzędzia:
+\begin{enumerate}
+    \item \textit{mypy} - narzędzie to pozwala na statyczne sprawdzanie typów w Pythonie \cite{mypy}. Dzięki temu można wykryć błędy w kodzie, które mogłyby zostać zignorowane przez interpreter. 
+    \item \textit{black} - narzędzie to pozwala na automatyczne formatowanie kodu \cite{black}. Dzięki temu można uniknąć sytuacji, w której kod jest niespójny, co może utrudnić jego czytanie.
+    \item \textit{pre-commit} - narzędzie to pozwala na automatyczne uruchamianie innych narzędzi, w celu sprawdzenia poprawności kodu \cite{pre_commit}.
+\end{enumerate}
+
+\subsubsection{Frontend}
+Część frontendowa została zbudowana w oparciu o architekturę, która została wykonana zgodnie z zasadami, które można znaleźć w dokumentacji \cite{React_file_structure} React \cite{React}. Struktura ta zakłada, że lokalizujemy wszystkie pliki związane z daną stroną bądź komponentem, w tym samym folderze. Przykładowo, jeżeli mamy komponent, który posiada własny arkusz stylów, umieszczamy go w tym samym folderze, co kod źródłowy tego komponentu.
+
+W projekcie zostały użyty język TypeScript \cite{TypeScript}, co rozszerza dodatkowo strukturę o dodatkowy katalog \textit{types}. W tym katalogu zostały umieszczone typy \cite{TypeScript_types}, co pozwoliło na statyczne typowanie zmiennych. Dodatkowo zostały zdefiniowane typy dla obiektów, które są zwracane przez API. Wszystkie typy zostały zdefiniowane w plikach z nazwą odpowiadającą ich przeznaczeniem. Konfigurację języka TypeScript można znaleźć w pliku \textit{tsconfig.json}.
+
+Katalog z kodem źródłowym został podzielone na pomniejsze katalogi:
+\begin{enumerate}
+    \item \textit{components} - zawiera komponenty, które zostały wykorzystane w aplikacji. Każdy komponent został umieszczony w osobnym folderze, gdzie znajduje się kod źródłowy komponentu wraz z arkuszem stylów (jeżeli taki posiada). W katalogu znajdują się komponenty odpowiedzialne za wyświetlanie danych, formularzy czy list.
+    \item \textit{context} - zawiera pliki związane z wykorzystaniem ContextAPI \cite{React_context} w aplikacji. Kontekst jest wykorzystywany do przechowywania danych, które są wykorzystywane w wielu miejscach aplikacji. W tym katalogu znajdują się pliki, które są odpowiedzialne za tworzenie kontekstu wraz z definicją funkcji odpowiedzialnych za zmianę stanu. W tym folderze także znajdują się definicję typów dla kontekstu.
+    \item \textit{css} - zawiera globalne arkusze stylów, które zostały wykorzystane w aplikacji. W tym arkuszu znajdują się definicję czcionek wraz z definicją paska przewijania, które zostały użyte w aplikacji.
+    \item \textit{pages} - zawiera definicję wszystkich podstron występujących w aplikacji. Każda podstrona została umieszczona w osobnym folderze, gdzie znajduje się kod źródłowy podstrony wraz z arkuszem stylów (jeżeli taki posiada).
+    \item \textit{services} - zawiera definicję wszystkich serwisów występujące w aplikacji. Każda funkcjonalność, posiada swój serwis, dzięki czemu można łatwo wykorzystać tę funkcjonalność w wielu miejscach aplikacji. W tym katalogu znajdują się funkcje odpowiedzialne za komunikację z API.
+    \item \textit{types} - zawiera definicję typów występujących w aplikacji. W tym katalogu znajdują się typy dla obiektów, które są zwracane przez API.
+    \item \textit{utils} - zawiera funkcje pomocnicze, które są wykorzystywane w wielu miejscach aplikacji. W tym katalogu znajdują się funkcje odpowiedzialne za definicję kolorów, które są ustawiane dynamiczne, pomocnicze funkcje oraz stałe wykorzystane w aplikacji.
+\end{enumerate}
+
+Na rysunku \ref{module_frontend} przedstawiono schemat modułów części frontendowej.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{diagrams/moduleFrontend.png}
+    \caption{Schemat części frontendowej modułów aplikacji}
+    \label{module_frontend}
+\end{figure}
+
+W projekcie także zostały skonfigurowano narzędzia, które pomagają w pracy przy projekcie. Wszystkie narzędzia zostały zainstalowane za pomocą menadżera pakietów \textit{npm} \cite{npm}. W projekcie zostały użyte następujące narzędzia:
+\begin{enumerate}
+    \item \textit{ESLint} \cite{ESLint} - narzędzie, które pomaga w utrzymaniu spójności kodu, dzięki czemu można łatwo go czytać i utrzymywać. W projekcie zostały użyte reguły, które zostały zdefiniowane przez twórców React \cite{React}. Dodatkowo zostały dodane reguły, które sortują importy oraz sprawdzają, czy zostały użyte. Konfiguracja została umieszczona w pliku \textit{.eslintrc}.
+    \item \textit{Prettier} \cite{Prettier} - narzędzie, które służy do formatowania kodu. W projekcie zostały użyte reguły, które zostały zdefiniowane przez twórców Prettier \cite{Prettier}. Konfiguracja została umieszczona w pliku \textit{.prettierrc}.
+    \item \textit{Vite} \cite{vite} - narzędzie, które służy do budowania aplikacji. W projekcie zostały użyte reguły, które zostały zdefiniowane przez twórców Vite \cite{vite}. Konfiguracja została umieszczona w pliku \textit{vite.config.ts}.
+    \item \textit{pre-commit} \cite{pre_commit} - narzędzie, które służy do automatyzacji procesu commitowania kodu. W projekcie zostały użyte reguły, które zostały zdefiniowane przez twórców pre-commit \cite{pre_commit}. Konfiguracja została umieszczona w pliku \textit{package.json}.
+\end{enumerate}
 
 \subsection{Zastosowane techniki pozyskiwania informacji}
+

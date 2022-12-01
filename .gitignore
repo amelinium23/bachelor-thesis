@@ -1,4 +1,7 @@
 .vscode
+out/**
+
+# Latex Garbage
 **.log
 **.aux
 **.bbl
@@ -16,4 +19,4 @@
 **.lof
 **.pdf
 **.run.xml
-out/**
+**.synctex(busy)
