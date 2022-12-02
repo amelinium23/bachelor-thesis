@@ -14,8 +14,7 @@ W tym rozdziale zostały zawarte wszystkie wymagania funkcjonalne oraz niefunkcj
 \begin{enumerate}
     \item Użytkownik zalogowany musi mieć możliwość wykonywania wszystkich czynności użytkownika niezalogowanego.
     \item Użytkownik posiada możliwość weryfikacji adresu mail.
-    \item Użytkownik posiada możliwość edycji, dodawania swojego aktualnego telefonu.
-    \item Użytkownik posiada możliwość edycji swojego profilu.
+    \item Użytkownik posiada możliwość edycji oraz dodawania swojego aktualnego telefonu.
     \item Użytkownik posiada możliwość dodawania, edycji oraz usuwania swoich postów.
     \item Użytkownik posiada możliwość przeglądania oraz sortowania swoich postów.
     \item Użytkownik posiada możliwość reagowania na posty.
@@ -41,15 +40,15 @@ Na rysunku \ref*{use_case} zostały przedstawione przypadki użycia aplikacji.
 
 \subsection{Użyte technologie}
 \subsubsection{Frontend}
-Część frontendowa została zbudowana w oparciu o język TypeScript \cite{TypeScript}. TypeScript jest to język opracowany przez firmę Microsoft, który pozwala na wprowadzenie statycznego typowania do JavaScript. Wadą tego języka jest kompilowanie go do JavaScriptu, co wydłuża czas budowania aplikacji. Dodatkowo, dzięki typom i integracji IDE występuje możliwość lepszego podpowiadania, jakie własności posiada dany obiekt.
+Część frontendowa została zbudowana w oparciu o język TypeScript \cite{TypeScript}. TypeScript to język opracowany przez firmę Microsoft, który pozwala na wprowadzenie statycznego typowania do JavaScript. Wadą tego języka jest kompilowanie go do JavaScriptu, co wydłuża czas budowania aplikacji. Dodatkowo, dzięki typom i integracji IDE \ref{IDE} występuje możliwość lepszego podpowiadania, jakie własności posiada dany obiekt.
 Język ten został wybrany ze względu na tworzenia własnych typów, aby móc odwzorować typy, które zostały zdefiniowane w projekcie. Dzięki stworzonym typom, usprawnia pracę programisty oraz zwiększa czytelność kodu. 
 
-W warstwy widoku została zastosowana biblioteka React \cite{React}. React jest to biblioteka do warstwy widoku, która pozwala na tworzenie komponentów w celu zbudowania widoku. Biblioteka ta charakteryzuje się dużą wydajnością dzięki zastosowania mechanizmu Virtual DOM, który pozwala na szybsze porównywanie zmian pomiędzy faktycznymi elementami na stronie. Pozwala ona na tworzenie komponentów, które będziemy mogli wielokrotnie używać danego komponentu w wielu miejscach strony. Do poruszania się po stronie w projekcie została użyta biblioteka React router \cite{react_router}, która umożliwia na zdefiniowanie podstron oraz nawigację pomiędzy nimi. Do umieszczania powiadomień na stronie została użyta biblioteka react toastify \cite{react_toastify}.
+W warstwy widoku została zastosowana biblioteka React \cite{React}. Jest to biblioteka do warstwy widoku, która pozwala na tworzenie komponentów w celu zbudowania widoku. Charakteryzuje się ona dużą wydajnością dzięki zastosowania mechanizmu Virtual DOM, który pozwala na szybsze porównywanie zmian pomiędzy faktycznymi elementami na stronie. Pozwala na tworzenie komponentów, które będziemy mogli wielokrotnie używać danego komponentu w wielu miejscach strony. Do poruszania się po stronie w projekcie została użyta biblioteka React router \cite{react_router}, która umożliwia na zdefiniowanie podstron oraz nawigację pomiędzy nimi. Do umieszczania powiadomień na stronie została użyta biblioteka react toastify \cite{react_toastify}.
 
-Wykorzystaną biblioteką z komponentami UI jest React Bootstrap. Biblioteka ta pozwala na użycie gotowych komponentów, które zostały stylowane przez twórców frameworka Bootstrap. Framework ten jest standardem dla aplikacji webowych, co spowodowało zbudowanie wielu innych frameworków opartych na Bootstrapie. jest dużo Ta biblioteka została wybrana ze względu, na prostotę jej użycia oraz wyglądu komponentów. 
+Wykorzystaną biblioteką z komponentami UI jest Bootstrap. Pozwala ona na użycie gotowych komponentów, które zostały stylowane przez twórców frameworka Bootstrap. Framework ten jest standardem dla aplikacji webowych, co spowodowało zbudowanie wielu innych frameworków opartych na Bootstrapie. Ta biblioteka została wybrana ze względu na prostotę jej użycia oraz wyglądu komponentów. 
 
 \subsubsection{Backend}
-Część backendowa została oparta na języku interpretowanym Python \cite{python}. Python jest to język opracowywany przez Python Software Foundation \cite{psf}, który pozwala na tworzenie aplikacji webowych czy prowadzenia analiz statystycznych. Język ten jest uniwersalny, dzięki któremu mamy możliwość zbudowania aplikacji webowych, konsolowych czy tworzenia sieci neuronowych. Wadą tego języka jest jego wydajność, wynika to z faktu działania interpretera, który musi skonwertować program na kod bajtowy, który następnie jest odczytywany i uruchamiany na maszynie wirtualnej Python'a. Zaletą tego języka jest łatwość budowania aplikacji webowych wraz z składnią języka i systemem wcięć. Do projektu został wybrany za jego prostotę użycia wraz z możliwością do analizy statystycznej.
+Część backendowa została oparta na języku interpretowanym Python \cite{python}. Python jest to język opracowywany przez Python Software Foundation \cite{psf}, który pozwala na tworzenie aplikacji webowych czy prowadzenia analiz statystycznych. Język ten jest uniwersalny, dzięki czemu mamy możliwość zbudowania aplikacji webowych, konsolowych czy tworzenia sieci neuronowych. Wadą tego języka jest jego wydajność - wynika to z faktu działania interpretera, który musi skonwertować program na kod bajtowy, który następnie jest odczytywany i uruchamiany na maszynie wirtualnej Python'a. Zaletą tego języka jest łatwość budowania aplikacji webowych wraz z składnią języka i systemem wcięć. Do projektu został wybrany za jego prostotę użycia wraz z możliwością do analizy statystycznej.
 
 Frameworkiem, który został użyty do zbudowania API jest jeden z najpopularniejszych frameworków Flask \cite{flask}. Flask jest to framework, cechującym się dużą wydajnością. Posiada on dużą możliwość rozbudowy poprzez pluginy, dzięki którym mamy możliwość łączenia się z bazami danych czy umożliwieniem autoryzacji. W tym projekcie Flask, został rozszerzony o bibliotekę Flask-APScheduler \cite{flask_apscheduler}. Plugin ten pozwala na zaplanowanie czynności w czasie, dzięki czemu jest możliwe cogodzinne wpisywanie danych telefonów do bazy danych. API pozwala na autoryzację użytkowników przy pomocy Firebase \cite{firebase}, dodawaniem zdjęć do Cloud Storage \cite{cloud_storage} i dodawaniem urządzeń użytkownika oraz postów do bazy danych Firestore \cite{firestore}. Flask został wybrany do projektu ze względu na możliwość związaną z rozszerzaniami oraz wydajność.
 
@@ -61,12 +60,12 @@ Dla części backendowej został stworzony akcja za pomocą Github Actions, któ
 Dla repozytorium z częścią frontendowa wykonano integrację z hostingiem Vercel. Vercel \cite{vercel} jest to hosting, który pozwala na wprowadzenie aplikacji frontendowych. Hosting ten charakteryzuje się dużą ilością szablonów dzięki któremu nie martwimy się o specjalną konfigurację dla danej aplikacji. Kolejną możliwością tego hostingu jest darmowe przypisanie własnych domen, co jest jednocześnie wadą. Posiadając darmową subskrypcję jesteśmy ograniczeni do domen kończących się na \textit{vercel.app} Hosting ten posiada integrację z wieloma systemami kontroli wersji: Github, Gitlab czy Bitbucket. Dodatkową opcją jest optymalizacja zdjęć, która posiada hosting, co pozwala na ograniczeniu pobierania obrazów na stronie.
 
 \section{Architektura aplikacji}
-W tej sekcji znajdują się opisane jak zostały podzielone moduły aplikacji zarówno części frontendowej oraz backendowej. Opisane także zostały wybrane źródła danych, które zostały wykorzystane w projekcie. Zawarty został również opis wraz z diagramem encji.
+W tej sekcji znajdują się opis jak zostały podzielone moduły aplikacji zarówno części frontendowej, jak i backendowej. Opisane także zostały wybrane źródła danych, które zostały wykorzystane w projekcie. Zawarty został również opis wraz z diagramem encji.
 
 \subsection{Źródła danych}\label{data_sources}
-W projekcie zostały wybrane dwa źródła danych. Zostały one wybrane także, ze względu na ich wysoką dostępność w internecie. Podstawowym źródłem danych jest GSM Arena API, dzięki czemu mogliśmy uzyskać dane dotyczące telefonów komórkowych. Dodatkowym źródłem danych są serwisy aukcyjne, które dostarczają aktualne ceny telefonów komórkowych.
+W projekcie zostały zastosowane dwa źródła danych. Zostały one wybrane ze względu na ich wysoką dostępność w internecie. Podstawowym źródłem danych jest GSM Arena API, dzięki czemu mogliśmy uzyskać dane dotyczące telefonów komórkowych. Dodatkowym źródłem danych są serwisy aukcyjne, które dostarczają aktualne ceny telefonów komórkowych.
 
-\subsubsection{Źródło danych o telefonach}\label{api}
+\subsubsection{GSM Arena API}\label{api} % napisz ty kretynie co to API, bo zapomnisz a później walniesz klocka
 Źródłem danych o telefonach jest GSM Arena API \cite{gsm_arena_api}, stworzone przez Kyaw Htut. Dostarcza one dane dotyczące urządzeń znajdujących się na portalu GSM Arena \cite{gsm_arena}. API wykorzystuję metodę Web Scraping, dzięki któremu otrzymujemy dane w formacie JSON.
 
 Wadą tego rozwiązania jest umieszczenie skryptu na serwisie Google App Script \cite{google_app_script}. Zostało to wymuszone, z powodu dodatkowej biblioteki Cheerio, które wykorzystuję API. Dodatkowo Google App Script posiada ograniczoną liczbę możliwych wywołań API. Warto zaznaczyć, że API nie jest oficjalnie udostępnione przez GSM Arena, dlatego nie jestem w stanie zapewnić, że będzie ono działało w przyszłości. Sam autor dostarcza pełną dokumentację API za pomocą programu Postman. W dokumentacji \cite{gsm_arena_api_reference} zostały zawarte przykładowe żądania, co pozwala na łatwe wykorzystanie API.
@@ -74,7 +73,7 @@ Wadą tego rozwiązania jest umieszczenie skryptu na serwisie Google App Script 
 \subsubsection{Serwisy aukcyjne}
 Drugim źródłem danych są serwisy aukcyjne. W projekcie zostały wykorzystane serwisy jak: Amazon, Ebay, AliExpress oraz sklepy producentów. Te dane zostały udostępnione w API Gsm Areny, nie było więc konieczności ich pobierania z serwisów.
 
-Początkowo w projekcie, miały znaleźć się dane serwisów zagranicznych miały zostać rozszerzone o dane z polskich serwisów aukcyjnych takich jak: Allegro, Olx, Skąpiec czy Ceneo. Serwisy te, aby pobrać dane, pobierają dodatkową opłatę, co więcej należy spełnić ich warunki, aby móc korzystać z API.
+Początkowo w projekcie miały znaleźć się dane serwisów zagranicznych  oraz zostać rozszerzone o dane z polskich serwisów aukcyjnych takich jak: Allegro, Olx, Skąpiec czy Ceneo. Serwisy te, aby pobrać dane, pobierają dodatkową opłatę, co więcej należy spełnić ich warunki, aby móc korzystać z API.
 
 W przypadku serwisu Allegro, należy być w programie partnerskim oraz aplikacja w Allegro musi być zweryfikowana. Weryfikacja odbywa się po skontaktowaniu się z Allegro. Aby otrzymać weryfikację, należy mieć 100 aktywnych użytkowników, zarejestrowanych w aplikacji oraz być w programie partnerskim. Na rysunku \ref*{allegro_verification} została przedstawione warunki weryfikacji aplikacji.
 
@@ -87,7 +86,7 @@ W przypadku serwisu Allegro, należy być w programie partnerskim oraz aplikacja
 
 Zatem integracja z tym serwisem nie była możliwa. Podobny sposób działania mają także serwisy Skąpiec \cite{skapiec} i Ceneo \cite{ceneo}. Również wymagają dołączenie do programu partnerskiego, przez co jest uniemożliwiony dostęp do ofert publiczny. Wymienione serwisy nie udostępniają danych dotyczących ofert publicznych, co uniemożliwia pobranie danych o cenach telefonów komórkowych.
 
-Innym przypadkiem jest serwis OLX. Ten serwis nie udostępnia możliwości pobierania ofert publicznych, a jedynie ofert zalogowanego użytkownika. Na rysunku \ref*{olx_response} została przedstawiona odpowiedź serwisu na prośbę o udostępnienie API.
+Innym przypadkiem jest serwis OLX. Nie udostępnia on możliwości pobierania ofert publicznych, a jedynie ofert zalogowanego użytkownika. Na rysunku \ref*{olx_response} została przedstawiona odpowiedź serwisu na prośbę o udostępnienie API.
 
 \begin{figure}[H]
     \centering
@@ -140,7 +139,7 @@ Na rysunku \ref{backend} przedstawiono schemat modułów aplikacji wraz z ich po
     \label{backend}
 \end{figure}
 
-W aplikacji zostały skonfigurowane narzędzie, pomagające w pomagają w pracy przy projekcie. Pakiety potrzebne do uruchomienia aplikacji zostały zainstalowane w wirtualnym środowisku. Zostało to uzyskane za pomocą pakietu \textit{virtualenv} \cite{virtualenv}. Pozwala to na uruchamianie kodu, na zdefiniowanym przez nas środowisku. Umożliwia to także testowanie w środowisku testowym z minimalnymi wymaganiami. 
+W aplikacji zostały skonfigurowane narzędzie, pomagające w pracy przy projekcie. Pakiety potrzebne do uruchomienia aplikacji zostały zainstalowane w wirtualnym środowisku. Zostało to uzyskane za pomocą pakietu \textit{virtualenv} \cite{virtualenv}. Pozwala to na uruchamianie kodu, na zdefiniowanym przez nas środowisku. Umożliwia to także testowanie w środowisku testowym z minimalnymi wymaganiami. 
 
 Wszystkie narzędzia zostały zainstalowane za pomocą menadżera pakietów Pythona \textit{pip} \cite{pip}. W celu poprawienia jakości kodu, zostały zastosowane narzędzia:
 \begin{enumerate}
@@ -150,9 +149,9 @@ Wszystkie narzędzia zostały zainstalowane za pomocą menadżera pakietów Pyth
 \end{enumerate}
 
 \subsubsection{Frontend}
-Część frontendowa została zbudowana w oparciu o architekturę, która została wykonana zgodnie z zasadami, które można znaleźć w dokumentacji \cite{React_file_structure} React \cite{React}. Struktura ta zakłada, że lokalizujemy wszystkie pliki związane z daną stroną bądź komponentem, w tym samym folderze. Przykładowo, jeżeli mamy komponent, który posiada własny arkusz stylów, umieszczamy go w tym samym folderze, co kod źródłowy tego komponentu.
+Część frontendowa została zbudowana w oparciu o architekturę, która została wykonana zgodnie z zasadami, które można znaleźć w dokumentacji \cite{React_file_structure} React \cite{React}. Struktura ta zakłada, że lokalizujemy wszystkie pliki związane z daną stroną bądź komponentem w tym samym folderze. Przykładowo, jeżeli mamy komponent, który posiada własny arkusz stylów, umieszczamy go w tym samym folderze, co kod źródłowy tego komponentu.
 
-W projekcie zostały użyty język TypeScript \cite{TypeScript}, co rozszerza dodatkowo strukturę o dodatkowy katalog \textit{types}. W tym katalogu zostały umieszczone typy \cite{TypeScript_types}, co pozwoliło na statyczne typowanie zmiennych. Dodatkowo zostały zdefiniowane typy dla obiektów, które są zwracane przez API. Wszystkie typy zostały zdefiniowane w plikach z nazwą odpowiadającą ich przeznaczeniem. Konfigurację języka TypeScript można znaleźć w pliku \textit{tsconfig.json}.
+W projekcie zostały użyty język TypeScript \cite{TypeScript}, co rozszerza dodatkowo strukturę o dodatkowy katalog \textit{types}. W tym katalogu zostały umieszczone typy \cite{TypeScript_types}, co pozwoliło na statyczne typowanie zmiennych. Co więcej, zostały zdefiniowane typy dla obiektów, które są zwracane przez API. Wszystkie typy zostały zdefiniowane w plikach z nazwą odpowiadającą ich przeznaczeniem. Konfigurację języka TypeScript można znaleźć w pliku \textit{tsconfig.json}.
 
 Katalog z kodem źródłowym został podzielone na pomniejsze katalogi:
 \begin{enumerate}
@@ -187,7 +186,7 @@ W projekcie ze względu na powody, które zostały opisane w rozdziale \ref{data
 
 Web scraping \cite{web_scraping} jest to metoda automatyzująca, polegająca na pobieraniu dokumentów HTML \ref{HTML} z serwisów internetowych w celu pozyskania danych z dokumentu. Metoda ta zawiera dwa moduły: przeszukiwarkę (ang. \textit{crawler}) oraz tzw. skrobaczkę (ang. \textit{scraper}).
 
-Przeszukiwarka jest to algorytm, który w sposób automatyczny przeszukuje stronę w celu pozyskania informacji. W naszym przypadku, poszukujemy informacji o cenie danego telefonu, pozyskujemy także w ten sposób specyfikację ze stron GSM Areny \cite{gsm_arena}. W ten sposób możemy pozyskać informację, ze stron, które nie udostępniają swoich serwisów, do użytku publicznego. Następnie dane z przeszukiwarki są przekazywane do skrobaczki, która wyciąga z nich interesujące nas informacje.
+Przeszukiwarka jest to algorytm, który w sposób automatyczny przeszukuje stronę w celu pozyskania informacji. W naszym przypadku, poszukujemy informacji o cenie danego telefonu, pozyskujemy także dzięki temu specyfikację ze stron GSM Areny \cite{gsm_arena}. W ten sposób możemy pozyskać informację, ze stron, które nie udostępniają swoich serwisów, do użytku publicznego. Następnie dane z przeszukiwarki są przekazywane do skrobaczki, która wyciąga z nich interesujące nas informacje.
 
 Skrobaczka jest to algorytm, który potrafi konwertować dane z postaci znaczników HTML \ref{HTML}, do postaci bardziej przyjaznej dla programisty. Można również rozszerzyć te dane o atrybuty znajdujące się w znacznikach. Tak zostały rozszerzone dane, dotyczące cen, poprzez dodanie hiperłączy do sklepów, gdzie można dane urządzenie kupić. W naszym przypadku, skrobaczka konwertuje dane z postaci znaczników HTML \ref{HTML}, do postaci JSON \ref{JSON}.
 
