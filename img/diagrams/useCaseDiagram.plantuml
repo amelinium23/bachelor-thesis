@@ -1,6 +1,5 @@
 @startuml useCaseDiagram
 
-skinparam actorStyle awesome
 left to right direction
 
 actor "Użytkownik" as User
@@ -33,9 +32,9 @@ User --> UC12
 User --> UC13
 User --> UC14
 
-UC1 --|> UC7
-UC1 --|> UC9
-UC1 --|> UC10
-UC1 --|> UC15
+UC1 ..> UC7
+UC1 ..> UC9
+UC1 ..> UC10
+UC1 ..> UC15
 
 @enduml
