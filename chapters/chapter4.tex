@@ -1,12 +1,16 @@
 \section{Metoda testowania}
-W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. Sekcja zawiera także opis metod, które zostały wykorzystane w projekcie. 
+W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. Wszystkie wyniki testów zostały przedstawione w rozdziale \ref{results}. 
 
 \subsection{Testy manualne}
+Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest człowiek. Dzięki takiemu podejściu tester sprawdza daną funkcjonalność, pozwala to także na szybsze zgłoszenie błędów. Z danego testu są wygenerowane raporty, które są przesyłane do programisty, który ma za zadanie naprawić błędy. Dodatkowo w raporcie zostały załączone zrzuty ekranu, które pokazują dokładnie, gdzie wystąpił błąd. Atutem takiego rozwiązania jest także brak dodatkowej konfiguracji narzędzi potrzebnych do wykonania testów.
 
+Podejście sprawia kilka problemów, najważniejszym z nich jest zdecydowanie większa ilość czasu, które jest potrzebne do wykonania testów. Dodatkowo, jeśli tester nie jest doświadczony, może popełnić błędy, które mogą być trudne do zauważenia. Ta własność powoduje także mniejszą dokładność. Wadą tego rozwiązania jest także brak możliwości uruchomienia dużej ilości testów jednocześnie, ponieważ jesteśmy ograniczeni zasobami ludzkimi. 
 
 \section{Testowane miejsca implementacji}
-W tej sekcji są przedstawiono przetestowanie miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Wszystkie wyniki testów zostały przedstawione w rozdziale \ref{results}.
+W tej sekcji są przedstawiono przetestowanie miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Każdy z wymienionych elementów został przetestowany za pomocą testów manualnych. Każda z wymienionych funkcjonalności zostały przetestowane przez grupę testową w postaci 3 osób. Każda z osób miała za zadanie przetestować daną funkcjonalność.
 
+\section{Wyniki testów}\label{results}
+W tej sekcji znalazły się wyniki testów przeprowadzonych przez grupę testerów.
 W tej sekcji znalazły się następujące funkcjonalności:
 \begin{enumerate}
   \item Logowanie i rejestracja użytkownika
@@ -19,7 +23,6 @@ W tej sekcji znalazły się następujące funkcjonalności:
   \item Porównanie trzech telefonów
 \end{enumerate}
 
-\section{Wyniki testów}\label{results}
 \subsection{Logowanie i rejestracja użytkownika}
 
 \subsection{Dodawanie, edycja i usuwanie postów}
