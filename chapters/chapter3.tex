@@ -128,13 +128,18 @@ Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych o
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.46]{diagrams/entityDiagram.png}
+    \includegraphics[scale=0.47]{diagrams/entityDiagram.png}
     \caption{Schemat struktur danych w bazie danych}
     \label{database}
 \end{figure}
-% napisać opis do rysunku \ref{database}
-Rysunek przedstawia struktury danych znajdujące się w projekcie aplikacji. Są one przesyłane za do użytkownika w formacie JSON |\ref{JSON}|.
-
+Rysunek przedstawia struktury danych znajdujące się w projekcie aplikacji. Są one przesyłane za do użytkownika w formacie JSON |\ref{JSON}|. Omówmy znajdujące się na rysunku \ref{database} struktury danych:
+\begin{enumerate}
+    \item \textit{Brand} - struktura ta opisuje dane o producencie telefonu. Zawiera ona nazwę producenta, identyfikator oraz klucz pozwalający na pobranie listy telefonów danego producenta. Brakuje w niej zdjęcia loga producenta, ponieważ \ref{api} nie udostępnia takiej informacji.
+    \item \textit{Device} - struktura ta opisuje dane o urządzeniu. Zawiera ona nazwę urządzenia, identyfikator, klucz pozwalający na pobranie specyfikacji danego urządzenia oraz zdjęcie. W przypadku, gdy użytkownik wystawił opinię o danym urządzeniu, to w strukturze \textit{Opinion} znajduje się identyfikator tego urządzenia.
+    \item \textit{User} - struktura ta opisuje dane o użytkowniku. Zawiera ona nazwę użytkownika, identyfikator, email, nazwę użytkownika wyświetlaną na stronie, zdjęcie oraz urządzenie, które użytkownik używa. Struktura ta jest odzwierciedleniem danych znajdujących się w Firebase. Ze względów bezpieczeństwa na stronie nie przesyłamy takich jak hasło, czy identyfikator użytkownika w Firebase.
+    \item \textit{Post} - struktura ta opisuje dane o poście. Zawiera on identyfikator postu, liczbę reakcji, nazwę autora, zawartość posta wraz z tytułem. Każdy rodzaj posta jest zawarty w typie posta. W przypadku, gdy użytkownik poprosił o wycenę telefonu, to zdjęcia będą przechowywane w tablicy z hiperłączami do zdjęć znajdujących się na Google Cloud Storage.
+    \item \textit{Comment} - struktura ta opisuje dane związane z komentarzami do postów. Zawiera ona identyfikator komentarza, informację o autorze oraz treść komentarza.
+\end{enumerate}
 
 \subsection{Struktura aplikacji}
 \subsubsection{Backend}
