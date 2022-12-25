@@ -133,6 +133,8 @@ Na rysunku \ref{database} przedstawiono schemat struktur danych w bazie danych o
     \label{database}
 \end{figure}
 % napisać opis do rysunku \ref{database}
+Rysunek przedstawia struktury danych znajdujące się w projekcie aplikacji. Są one przesyłane za do użytkownika w formacie JSON |\ref{JSON}|.
+
 \subsection{Struktura aplikacji}
 \subsubsection{Backend}
 Backend został zbudowany w oparciu o moduły, występujące w języku Python \cite{python}. Pozwoliło to na łatwe podzielenie kodu na poszczególne moduły aplikacji. Poszczególne punkty końcowe API zostały zamknięte w odpowiednim pakiecie. W frameworku Flask \cite{flask}, występuje pojęcie \textit{Blueprint} \cite{flask_blueprint}. Koncept ten zakłada, że projekt można podzielić na pomniejsze aplikacje, które mogą zostać wykorzystywane w wielu aplikacjach. Taka architektura, poprawia ona czytelność kodu, łatwość utrzymania oraz możliwość łatwego rozszerzenia aplikacji.

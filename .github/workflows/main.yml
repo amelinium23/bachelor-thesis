@@ -11,9 +11,9 @@ jobs:
       - name: 👀 Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: PT_Praca_Dyplomowa_230025.tex
       - name: 🗃️ Create bachelor pdf
         uses: actions/upload-artifact@v3
         with:
           name: PT_Praca_Dyplomowa_230025
-          path: main.pdf
+          path: PT_Praca_Dyplomowa_230025.pdf
