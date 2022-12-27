@@ -7,7 +7,7 @@ Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest cz�
 Podejście sprawia kilka problemów, najważniejszym z nich jest zdecydowanie większa ilość czasu, które jest potrzebne do wykonania testów. Dodatkowo, jeśli tester nie jest doświadczony, może popełnić błędy, które mogą być trudne do zauważenia. Ta własność powoduje także mniejszą dokładność. Wadą tego rozwiązania jest także brak możliwości uruchomienia dużej ilości testów jednocześnie, ponieważ jesteśmy ograniczeni zasobami ludzkimi. 
 
 \section{Testowane miejsca implementacji}
-W tej sekcji są przedstawiono przetestowanie miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Każdy z wymienionych elementów został przetestowany za pomocą testów manualnych. Każda z wymienionych funkcjonalności zostały przetestowane przez grupę testową w postaci 3 osób. Każda z osób miała za zadanie przetestować daną funkcjonalność.
+W tej sekcji są przedstawiono przetestowanie miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Każda z osób miała za zadanie przetestować daną funkcjonalność.
 
 W tej sekcji znalazły się następujące funkcjonalności:
 \begin{enumerate}
@@ -21,12 +21,60 @@ W tej sekcji znalazły się następujące funkcjonalności:
   \item Porównanie trzech telefonów
 \end{enumerate}
 
-
-\section{Wyniki testów}\label{results}
-W tej sekcji znalazły się wyniki testów przeprowadzonych przez grupę testerów. W kolejnych podsekcjach przedstawiono wyniki testowania.
-
 \subsection{Logowanie i rejestracja użytkownika}
+Aby móc zalogować się na stronę, należy posiadać przygotowany adres email. Następnie przechodzimy do ekranu logowania, za pomocą menu w prawym górnym rogu. Na rysunku \ref{login_menu} przedstawiono przycisk umożliwiający przejście do ekranu logowania.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/login-register/Login-button.png}
+  \caption{Przycisk odpowiedzialny za przejście do ekranu logowania.}
+  \label{login_menu}
+\end{figure}
+Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. Strona logowania została podzielona na dwie sekcje. Jedna z nich jest odpowiedzialna za logowanie. W tej sekcji znajduje się formularz gdzie należy wpisać adres email oraz hasło. Dodatkowo umieszczono także sekcję rejestracji, gdzie można wpisać email oraz hasło dla nowego użytkownika. Na rysunku \ref{login_page} zostały przedstawione obie sekcje.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/login-register/login-page.png}
+  \caption{Strona logowania oraz rejestracji}
+  \label{login_page}
+\end{figure}
+Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać hasło, które ma przynajmniej 8 znaków, zawierać małe i duże litery, cyfry oraz znak specjalny. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny.  Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego logowania. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/login-register/login-sucessful.png}
+  \caption{Przykład poprawnego logowania}
+  \label{login_success}
+\end{figure}
+Dodatkowo jeżeli użytkownik posiada zdjęcie profilowe jest ono wyświetlane w prawym górnym rogu strony. Do zdjęcia jest również dodany przycisk, który pozwala na przejście do profilu użytkownika.
 
+W przypadku rejestracji jeżeli użytkownik wpiszę poprawne dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego. Na rysunku \ref{register_page} przedstawiono stronę rejestracji.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.48]{tests/login-register/register-form.png}
+  \caption{Formularz rejestracji}
+  \label{register_page}
+\end{figure}
+Po poprawnej rejestracji użytkownik jest przenoszony na stronę główną. Dodatkowo użytkownik jest informowany za pomocą powiadomienia o poprawnym zarejestrowaniu wraz z nową nazwą użytkownika. 
+
+Na rysunku \ref{success_register} przedstawiono przykład poprawnej rejestracji.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{tests/login-register/register-success.png}
+  \caption{Przykład poprawnego zarejestrowania}
+  \label{success_register}
+\end{figure}
+W przypadku napotkanych problemów podczas użytkownik jest informowanych o tych w błędach za pomocą powiadomień. Wszystkie powiadomienia są wyświetlane w prawym dolnym rogu. W zależności od rodzaju powiadomienia są one rozróżnione za pomocą kolorów. Na rysunku \ref{register_error} przedstawiono przykład błędnego wprowadzenia danych.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{tests/login-register/register-error.png}
+  \caption{Błąd wyświetlany w przypadku błędu rejestracji.}
+  \label{register_error}
+\end{figure}
+Użytkownik jest informowany o tym błędach w formie komunikatów w kontrolach. Jeżeli wartość danej kontrolki jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę. Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia danych.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/login-register/register-not-valid.png}
+  \caption{Przykład błędnego wprowadzenia danych}
+  \label{login_error}
+\end{figure}
 
 \subsection{Dodawanie, edycja i usuwanie postów}
 
