@@ -1,5 +1,5 @@
 \section{Metoda testowania}
-W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. Wszystkie wyniki testów zostały przedstawione w rozdziale \ref{results}. 
+W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. 
 
 \subsection{Testy manualne}
 Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest człowiek. Dzięki takiemu podejściu tester sprawdza daną funkcjonalność, pozwala to także na szybsze zgłoszenie błędów. Z danego testu są wygenerowane raporty, które są przesyłane do programisty, który ma za zadanie naprawić błędy. Dodatkowo w raporcie zostały załączone zrzuty ekranu, które pokazują dokładnie, gdzie wystąpił błąd. Atutem takiego rozwiązania jest także brak dodatkowej konfiguracji narzędzi potrzebnych do wykonania testów.
@@ -36,7 +36,7 @@ Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. S
   \caption{Strona logowania oraz rejestracji}
   \label{login_page}
 \end{figure}
-Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać hasło, które ma przynajmniej 8 znaków, zawierać małe i duże litery, cyfry oraz znak specjalny. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny.  Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego logowania. 
+Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać hasło, które ma przynajmniej 8 znaków, zawierać małe i duże litery, cyfry oraz znak specjalny. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego logowania. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/login-sucessful.png}
@@ -68,7 +68,9 @@ W przypadku napotkanych problemów podczas użytkownik jest informowanych o tych
   \caption{Błąd wyświetlany w przypadku błędu rejestracji.}
   \label{register_error}
 \end{figure}
-Użytkownik jest informowany o tym błędach w formie komunikatów w kontrolach. Jeżeli wartość danej kontrolki jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę. Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia danych.
+Użytkownik jest informowany o tym błędach w formie komunikatów w kontrolach. Jeżeli wartość danej kontrolki jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę.
+
+Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia danych.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/register-not-valid.png}
@@ -77,10 +79,70 @@ Użytkownik jest informowany o tym błędach w formie komunikatów w kontrolach.
 \end{figure}
 
 \subsection{Dodawanie, edycja i usuwanie postów}
+Aby móc dodać post użytkownik musi być zalogowany. Dodawanie postów odbywa się po kliknięciu przycisku dodaj post, użytkownik zostaje przekierowany na stronę dodawania posta. Po kliknięciu przycisku użytkownik jest przenoszony na stronę dodawania posta. Przycisk ten pozostaje niewidoczny, dopóki użytkownik nie będzie zalogowany. Na rysunku \ref{add_post} przedstawiono stronę forum skąd można przejść do podstrony dodania posta.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/add-edit-delete-posts/add-post.png}
+  \caption{Strona forum skąd można przejść do dodawania posta}
+  \label{add_post}
+\end{figure}
+Strona zawiera kilka rodzajów wpisów, które można stworzyć na stronie. W aplikacji występują trzy rodzaje postów: 
+\begin{enumerate}
+  \item \textit{question} - użytkownik może zadać pytanie dotyczące telefonów, a inni użytkownicy mogą na nie odpowiedzieć.
+  \item \textit{discussion} - użytkownik może stworzyć dyskusję na temat telefonów, gdzie inni użytkownicy mogą się wypowiedzieć na temat dyskusji.
+  \item \textit{listing} - użytkownik może wystawić telefon w celu sprzedaży bądź też wyceny danego telefonu. Inni użytkownicy mogą ocenić telefon oraz zaproponować cenę.
+\end{enumerate}
+Na rysunku \ref{add_question_page} przedstawiono stronę dodawania wpisu typu \textit{question}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/add-edit-delete-posts/create-question.png}
+  \caption{Strona dodawania posta - \textit{question}}
+  \label{add_question_page}
+\end{figure}
+Na rysunku \ref{add_discussion_post} przedstawiono stronę dodawania wpisu typu \textit{discussion}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/add-edit-delete-posts/create-discussion.png}
+  \caption{Strona dodawania posta - \textit{discussion}}
+  \label{add_discussion_post}
+\end{figure}
+Na rysunku \ref{add_listing_post} przedstawiono stronę dodawania wpisu typu \textit{listing}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/add-edit-delete-posts/create-listing.png}
+  \caption{Strona dodawania posta - \textit{listing}}
+  \label{add_listing_post}
+\end{figure}
+Na rysunkach \ref{add_discussion_post}, \ref{add_listing_post} oraz \ref{add_discussion_post} przedstawiono wyświetlanie błędów w przypadku niepoprawnego wprowadzenia danych. Można także zauważyć na tych rysunkach, że jeżeli występują błędy w formularzu, to przycisk dodawania posta jest zablokowany. Po wprowadzeniu poprawnych danych przycisk zostaje odblokowany. Na rysunku \ref{add_valid_post} przedstawiono poprawnie wypełniony formularz dodawania posta.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/add-edit-delete-posts/create-post-valid.png}
+  \caption{Strona dodawania posta - poprawna walidacja pól}
+  \label{add_valid_post}
+\end{figure}
+Po pomyślnym dodaniu posta użytkownik zostaje przeniesiony na stronę ze swoimi postami. Na rysunku \ref{add_post_success} przedstawiono pomyślne dodania posta.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{tests/add-edit-delete-posts/successful-post-creation.png}
+  \caption{Strona z postami użytkownika po dodaniu nowego posta}
+  \label{add_post_success}
+\end{figure}
+Aby zmodyfikować post należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Edit}. Aby usunąć post należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Delete}. Na rysunku \ref{edit_post} przedstawiono stronę edycji posta. Aby zmodyfikować należy kliknąć przycisk \textit{Update post}. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.46]{tests/add-edit-delete-posts/editting-post.png}
+  \caption{Strona edycji posta}
+  \label{edit_post}
+\end{figure}
+Jeżeli post zostanie poprawnie zmodyfikowany użytkownik zostaje przeniesiony do strony z postami użytkownika. Na rysunku \ref{edit_post_success} przedstawiono pomyślne zmodyfikowanie posta.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.36]{tests/add-edit-delete-posts/editted-post-success.png}
+  \caption{Strona z postami użytkownika po pomyślnym edycji posta}
+  \label{edit_post_success}
+\end{figure}
 
 \subsection{Edycja profilu użytkownika}
-
-\subsection{Weryfikacja maila użytkownika}
 
 \subsection{Wyświetlanie listy postów}
 
