@@ -143,8 +143,55 @@ Jeżeli post zostanie poprawnie zmodyfikowany użytkownik zostaje przeniesiony d
 \end{figure}
 
 \subsection{Edycja profilu użytkownika}
-
-\subsection{Wyświetlanie listy postów}
+Aby zmodyfikować profil użytkownika należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie przechodzimy za pomocą przycisku \textit{My profile}. Na rysunku \ref{profile_page} przedstawiono stronę profilu użytkownika.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/edit-profile/profile-page.png}
+  \caption{Strona profilu użytkownika}
+  \label{profile_page}
+\end{figure}
+Aby zmodyfikować profil należy kliknąć przycisk \textit{Edit profile}. Na rysunku \ref{edit_profile} przedstawiono stronę edycji profilu użytkownika. W formularzu można zmienić takie dane jak numer telefonu, zdjęcie oraz nazwa użytkownika. Aby zmodyfikować profil należy kliknąć przycisk \textit{Edit profile}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/edit-profile/edit-profile-form.png}
+  \caption{Strona edycji profilu użytkownika}
+  \label{edit_profile}
+\end{figure}
+Dodatkowo na stronie profilu można zweryfikować adres email. Aby zweryfikować adres email należy kliknąć przycisk \textit{Verify email}. Następnie na wybrany adres email otrzymujemy maila. W mailu znajduje się link do zweryfikowania adresu email.  Na rysunku \ref{verify_email} przedstawiono stronę profilu użytkownika po zweryfikowaniu adresu email. Strona informuje o wysłaniu maila na podany adres email.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{tests/edit-profile/send-verification-email.png}
+  \caption{Strona profilu użytkownika po zweryfikowaniu adresu email}
+  \label{verify_email}
+\end{figure}
+Na rysunku \ref{verify_email_message} przedstawiono email z linkiem do zweryfikowania adresu email. Ten mail został wygenerowany przez Firebase. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.32]{tests/edit-profile/verification-mail.png}
+  \caption{Email z linkiem do zweryfikowania adresu email}
+  \label{verify_email_message}
+\end{figure}
+Po kliknięciu w link użytkownik zostaje przekierowany do strony weryfikacji stworzonej przez Firebase. Firebase pozwala na zmodyfikowanie treści maila. Na rysunku \ref{verify_email_page} przedstawiono stronę weryfikacji adresu email.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.33]{tests/edit-profile/mail-verification-successfull.png}
+  \caption{Strona weryfikacji adresu email}
+  \label{verify_email_page}
+\end{figure}
+Użytkownik także posiada edytowanie używanego przez siebie urządzenia. Aby zmodyfikować urządzenie należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie po wciśnięciu przycisku \textit{Edit Phone} użytkownik wybierze swoje urządzenie poprzez rozwijane menu. W tym menu zostają wyświetlone dostępne na stronie urządzenia. Na rysunku \ref{edit_phone} przedstawiono stronę edycji urządzenia.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.47]{tests/edit-profile/phone-list.png}
+  \caption{Strona edycji urządzenia}
+  \label{edit_phone}
+\end{figure}
+Po pomyślnej zmianie urządzenia na stronie powiada się powiadomienie o pomyślnej zmianie urządzenia. Na rysunku \ref{edit_phone_success} przedstawiono stronę profilu użytkownika po pomyślnej zmianie urządzenia.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.44]{tests/edit-profile/updated-user-device.png}
+  \caption{Strona profilu użytkownika po pomyślnej zmianie urządzenia}
+  \label{edit_phone_success}
+\end{figure}
 
 \subsection{Sortowanie i wyświetlanie telefonów}
 
