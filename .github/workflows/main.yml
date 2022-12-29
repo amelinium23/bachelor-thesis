@@ -14,7 +14,7 @@ jobs:
           args: "-shell-ignore"
           root_file: PT_Praca_Dyplomowa_230025.tex
       - name: 🗃️ Create bachelor pdf
-        uses: actions/upload-artifact@v31
+        uses: actions/upload-artifact@v3
         with:
           name: PT_Praca_Dyplomowa_230025
           path: PT_Praca_Dyplomowa_230025.pdf
