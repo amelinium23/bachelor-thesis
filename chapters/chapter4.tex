@@ -194,7 +194,102 @@ Po pomyślnej zmianie urządzenia na stronie powiada się powiadomienie o pomyś
 \end{figure}
 
 \subsection{Sortowanie i wyświetlanie telefonów}
-
-\subsection{Sortowanie i wyświetlanie producentów}
+Aby wyświetlić listę telefonów należy przejść na podstronę o nazwie \textit{Phones}. Na tej stronie wyświetlane są wszystkie dostępne na stronie telefony. Telefony na stronie są grupowane ze względu na producenta. Na rysunku \ref{phones_page} przedstawiono stronę z listą telefonów.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{tests/display-phones/phone-page.png}
+  \caption{Strona z listą telefonów}
+  \label{phones_page}
+\end{figure}
+Zastosowana technika \textit{lazy loading} pozwoliła na opóźnienie władowania zdjęć telefonów. Technika ta pozwala na opóźnienie ładowania statycznych plików jak zdjęcia. Obecnie przeglądarki obsługują przechowywanie zdjęć w pamięci podręcznej, co pozwala na ładowanie zdjęć z pamięci podręcznej. Pozwoliło to na szybsze ładowanie strony. Na serwer zostają przesyłane parametry jak: numer strony, liczba elementów na stronie oraz tryb sortowania. Użytkownik na stronie może zmienić tryb sortowania. Język Python udostępnia możliwość łatwą możliwość paginacji. Ta metoda nazywa się cięciem. W algorytmie \ref{slice_example} przedstawiono  został przedstawiony kod odpowiedzialny za paginację telefonów.
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize
+  ]{python3}
+  @DEVICE.route("/")
+  def get_all_devices_by_brand() -> Response:
+      try:
+          page_number = args.get("page_number")
+          page_size = args.get("page_size")
+          sort_mode = args.get("sort_mode", "ascending")
+          devices = get_device_list_by_brands(db)
+          sorted_devices = sort_devices(devices, sort_mode)
+          result = {
+              "data": sorted_devices,
+              "total": len(devices),
+              "totalPhones": count_phones(devices),
+          }
+          if page_size and page_number and sort_mode:
+              start_index: int = (int(page_number) - 1) * int(page_size)
+              end_index: int = start_index + int(page_size)
+              result = {
+                  "data": sorted_devices[start_index:end_index],
+                  "total": len(devices),
+                  "totalPhones": count_phones(devices),
+              }
+          return jsonify(result)
+      except Exception as e:
+          return Response(str(e), status=500)    
+  \end{minted}
+  \centering
+  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
+  \label{slice_example}
+\end{code}
+Aby zmienić tryb sortowania należy wybrać odpowiednią opcję z rozwijanego menu. Na rysunku \ref{reverse_sorting} przedstawiono zmianę trybu sortowania na \textit{Descending}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{tests/display-phones/phone-sorting-reverse.png}
+  \caption{Strona z listą telefonów po zmianie trybu sortowania}
+  \label{reverse_sorting}
+\end{figure}
 
 \subsection{Porównanie trzech telefonów}
+Aby porównać telefony należy przejść na podstronę o nazwie \textit{Compare}. Użytkownik wybiera za pomocą rozwijanych menu trzy urządzenia. Urządzenia pobierane są z serwera, a następnie wyświetlane są na stronie. Każde wybranie urządzenia powoduje władowanie informacji o urządzeniu. Na rysunku \ref{compare_page} przedstawiono stronę porównania przed wybraniem urządzeń do porównania.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{tests/compare-devices/compare-page.png}
+  \caption{Strona z listą telefonów po zmianie trybu sortowania}
+  \label{compare_page}
+\end{figure}
+
+Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Metoda ta nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie kilku zapytań asynchronicznych jednocześnie. Pozwala to na szybsze pobieranie informacji o urządzeniach. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
+
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize,
+    ]{Typescript}
+    const getComparison = async (deviceKeys: string[]) => {
+      const comparisons: { [key: string]: DeviceDetails } = {}
+      const promises = deviceKeys.map(async (key) => {
+        return await getDetails(key)
+      })
+      const data = await Promise.all(promises)
+      data.forEach((device: DeviceDetails) => {
+        comparisons[device.key] = device
+      })
+      return comparisons
+    }
+  \end{minted}
+  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
+  \label{getting_devices}
+\end{code}
+Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakie typy danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}.
+
+Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Informacje dotyczące urządzeń są przedstawione w formie tabeli. Na rysunku \ref{compare_three_devices} przedstawiono stronę porównania po wybraniu urządzeń.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.36]{tests/compare-devices/compare-three-devices.png}
+  \caption{Wykonanie porównania trzech urządzeń}
+  \label{compare_three_devices}
+\end{figure}

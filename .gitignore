@@ -20,3 +20,4 @@ out/**
 **.pdf
 **.run.xml
 **.synctex(busy)
+_minted-**
