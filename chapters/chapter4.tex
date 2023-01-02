@@ -1,24 +1,16 @@
-% \section{Metoda testowania}
-% W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. 
-
-% \subsection{Testy manualne}
-% Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest człowiek. Dzięki takiemu podejściu tester sprawdza daną funkcjonalność, pozwala to także na szybsze zgłoszenie błędów. Z danego testu są wygenerowane raporty, które są przesyłane do programisty, który ma za zadanie naprawić błędy. Dodatkowo w raporcie zostały załączone zrzuty ekranu, które pokazują dokładnie, gdzie wystąpił błąd. Atutem takiego rozwiązania jest także brak dodatkowej konfiguracji narzędzi potrzebnych do wykonania testów.
-
-% Podejście sprawia kilka problemów, najważniejszym z nich jest zdecydowanie większa ilość czasu, które jest potrzebne do wykonania testów. Dodatkowo, jeśli tester nie jest doświadczony, może popełnić błędy, które mogą być trudne do zauważenia. Ta własność powoduje także mniejszą dokładność. Wadą tego rozwiązania jest także brak możliwości uruchomienia dużej ilości testów jednocześnie, ponieważ jesteśmy ograniczeni zasobami ludzkimi. 
-
 \section{Opis działania aplikacji}
-W tej sekcji są przedstawiono przetestowanie miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Każda z osób miała za zadanie przetestować daną funkcjonalność.
+W tej sekcji są przedstawiono przetestowane miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}. Każda z osób miała za zadanie przetestować daną funkcjonalność.
 
 W tej sekcji znalazły się następujące funkcjonalności:
 \begin{enumerate}
-  \item Logowanie i rejestracja użytkownika
-  \item Dodawanie, edycja i usuwanie postów
-  \item Edycja profilu użytkownika
-  \item Weryfikacja maila użytkownika
-  \item Wyświetlanie listy postów
-  \item Sortowanie i wyświetlanie telefonów
-  \item Sortowanie i wyświetlanie producentów
-  \item Porównanie trzech telefonów
+  \item Logowanie i rejestracja użytkownika.
+  \item Dodawanie, edycja i usuwanie postów.
+  \item Edycja profilu użytkownika.
+  \item Weryfikacja maila użytkownika.
+  \item Wyświetlanie listy postów.
+  \item Sortowanie i wyświetlanie telefonów.
+  \item Sortowanie i wyświetlanie producentów.
+  \item Porównanie trzech telefonów.
 \end{enumerate}
 
 \subsection{Logowanie i rejestracja użytkownika}
@@ -29,7 +21,7 @@ Aby móc zalogować się na stronę, należy posiadać przygotowany adres email.
   \caption{Przycisk odpowiedzialny za przejście do ekranu logowania.}
   \label{login_menu}
 \end{figure}
-Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. Strona logowania została podzielona na dwie sekcje. Jedna z nich jest odpowiedzialna za logowanie. W tej sekcji znajduje się formularz gdzie należy wpisać adres email oraz hasło. Dodatkowo umieszczono także sekcję rejestracji, gdzie można wpisać email oraz hasło dla nowego użytkownika. Na rysunku \ref{login_page} zostały przedstawione obie sekcje.
+Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. Strona logowania została podzielona na dwie sekcje. Jedna z nich jest odpowiedzialna za logowanie. W tej sekcji znajduje się formularz, gdzie należy wpisać adres email oraz hasło. Dodatkowo umieszczono także sekcję rejestracji, gdzie można wpisać email oraz hasło dla nowego użytkownika. Na rysunku \ref{login_page} zostały przedstawione obie sekcje.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/login-page.png}
@@ -257,6 +249,18 @@ Aby porównać telefony należy przejść na podstronę o nazwie \textit{Compare
   \label{compare_page}
 \end{figure}
 
+Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Informacje dotyczące urządzeń są przedstawione w formie tabeli. Na rysunku \ref{compare_three_devices} przedstawiono stronę porównania po wybraniu urządzeń.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.36]{tests/compare-devices/compare-three-devices.png}
+  \caption{Wykonanie porównania trzech urządzeń}
+  \label{compare_three_devices}
+\end{figure}
+
+\section{Implementacja wybranych miejsc aplikacji}
+
+\subsection*{Pobieranie informacji o urządzeniach}
 Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Metoda ta nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie kilku zapytań asynchronicznych jednocześnie. Pozwala to na szybsze pobieranie informacji o urządzeniach. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
 
 \begin{code}[H]
@@ -285,15 +289,14 @@ Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występując
 \end{code}
 Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakie typy danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}.
 
-Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Informacje dotyczące urządzeń są przedstawione w formie tabeli. Na rysunku \ref{compare_three_devices} przedstawiono stronę porównania po wybraniu urządzeń.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.36]{tests/compare-devices/compare-three-devices.png}
-  \caption{Wykonanie porównania trzech urządzeń}
-  \label{compare_three_devices}
-\end{figure}
-
-\section{Implementacja wybranych miejsc aplikacji}
 
 
+
+
+% \section{Metoda testowania}
+% W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. 
+
+% \subsection{Testy manualne}
+% Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest człowiek. Dzięki takiemu podejściu tester sprawdza daną funkcjonalność, pozwala to także na szybsze zgłoszenie błędów. Z danego testu są wygenerowane raporty, które są przesyłane do programisty, który ma za zadanie naprawić błędy. Dodatkowo w raporcie zostały załączone zrzuty ekranu, które pokazują dokładnie, gdzie wystąpił błąd. Atutem takiego rozwiązania jest także brak dodatkowej konfiguracji narzędzi potrzebnych do wykonania testów.
+
+% Podejście sprawia kilka problemów, najważniejszym z nich jest zdecydowanie większa ilość czasu, które jest potrzebne do wykonania testów. Dodatkowo, jeśli tester nie jest doświadczony, może popełnić błędy, które mogą być trudne do zauważenia. Ta własność powoduje także mniejszą dokładność. Wadą tego rozwiązania jest także brak możliwości uruchomienia dużej ilości testów jednocześnie, ponieważ jesteśmy ograniczeni zasobami ludzkimi. 
