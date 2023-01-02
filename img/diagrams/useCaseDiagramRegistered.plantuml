@@ -12,12 +12,12 @@ usecase "Przeglądania oraz sortowania swoich postów" as UC5
 usecase "Reagowanie na posty" as UC6
 usecase "Dodawanie, edycja i usuwanie opinii" as UC7
 
-user --> UC1
-user --> UC2
-user --> UC3
-user --> UC4
-user --> UC5
-user --> UC6
-user --> UC7
+user -- UC1
+user -- UC2
+user -- UC3
+user -- UC4
+user -- UC5
+user -- UC6
+user -- UC7
 
 @enduml
