@@ -28,16 +28,16 @@ Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. S
   \caption{Strona logowania oraz rejestracji}
   \label{login_page}
 \end{figure}
-Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać hasło, które ma przynajmniej 8 znaków, zawierać małe i duże litery, cyfry oraz znak specjalny. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego logowania. 
+Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać prawidłowe hasło. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania na stronę główną po zalogowaniu. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/login-sucessful.png}
-  \caption{Przykład poprawnego logowania}
+  \caption{Przykład poprawnego przekierowania na stronę główną po zalogowaniu.}
   \label{login_success}
 \end{figure}
-Dodatkowo jeżeli użytkownik posiada zdjęcie profilowe jest ono wyświetlane w prawym górnym rogu strony. Do zdjęcia jest również dodany przycisk, który pozwala na przejście do profilu użytkownika.
+Dodatkowo jeżeli użytkownik posiada zdjęcie profilowe, jest ono wyświetlane w prawym górnym rogu strony. Do zdjęcia jest również dodany przycisk, który pozwala na przejście do profilu użytkownika.
 
-W przypadku rejestracji jeżeli użytkownik wpiszę poprawne dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego. Na rysunku \ref{register_page} przedstawiono stronę rejestracji.
+W przypadku rejestracji jeżeli użytkownik wpisze poprawne, dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego. Na rysunku \ref{register_page} przedstawiono formularz rejestracji.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/register-form.png}
@@ -46,21 +46,21 @@ W przypadku rejestracji jeżeli użytkownik wpiszę poprawne dane zostaje przeni
 \end{figure}
 Po poprawnej rejestracji użytkownik jest przenoszony na stronę główną. Dodatkowo użytkownik jest informowany za pomocą powiadomienia o poprawnym zarejestrowaniu wraz z nową nazwą użytkownika. 
 
-Na rysunku \ref{success_register} przedstawiono przykład poprawnej rejestracji.
+Na rysunku \ref{success_register} przedstawiono przykład poprawnego przekierowania po udanej rejestracji.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.45]{tests/login-register/register-success.png}
-  \caption{Przykład poprawnego zarejestrowania}
+  \caption{Przykład poprawnego przekierowania po udanej rejestracji.}
   \label{success_register}
 \end{figure}
-W przypadku napotkanych problemów podczas użytkownik jest informowanych o tych w błędach za pomocą powiadomień. Wszystkie powiadomienia są wyświetlane w prawym dolnym rogu. W zależności od rodzaju powiadomienia są one rozróżnione za pomocą kolorów. Na rysunku \ref{register_error} przedstawiono przykład błędnego wprowadzenia danych.
+W przypadku napotkanych problemów podczas, użytkownik jest informowanych o tych w błędach za pomocą powiadomień. Wszystkie powiadomienia są wyświetlane w prawym dolnym rogu. W zależności od rodzaju powiadomienia są one rozróżnione za pomocą kolorów. Na rysunku \ref{register_error} przedstawiono przykład błędnego wprowadzenia danych.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{tests/login-register/register-error.png}
   \caption{Błąd wyświetlany w przypadku błędu rejestracji.}
   \label{register_error}
 \end{figure}
-Użytkownik jest informowany o tym błędach w formie komunikatów w kontrolach. Jeżeli wartość danej kontrolki jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę.
+Użytkownik jest informowany o tym błędach w formie podświetlenia danego pola formularza. Jeżeli wartość danej pola jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę.
 
 Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia danych.
 \begin{figure}[H]
@@ -71,11 +71,11 @@ Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia dan
 \end{figure}
 
 \subsection{Dodawanie, edycja i usuwanie postów}
-Aby móc dodać post użytkownik musi być zalogowany. Dodawanie postów odbywa się po kliknięciu przycisku dodaj post, użytkownik zostaje przekierowany na stronę dodawania posta. Po kliknięciu przycisku użytkownik jest przenoszony na stronę dodawania posta. Przycisk ten pozostaje niewidoczny, dopóki użytkownik nie będzie zalogowany. Na rysunku \ref{add_post} przedstawiono stronę forum skąd można przejść do podstrony dodania posta.
+Aby móc dodać post użytkownik musi być zalogowany. Dodawanie postów odbywa się po kliknięciu przycisku dodaj post, użytkownik zostaje przekierowany na stronę dodawania posta. Przycisk ten pozostaje niewidoczny, dopóki użytkownik nie będzie zalogowany. Na rysunku \ref{add_post} przedstawiono stronę forum skąd można przejść do podstrony dodania posta.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/add-edit-delete-posts/add-post.png}
-  \caption{Strona forum skąd można przejść do dodawania posta}
+  \caption{Strona forum z możliwością do dodawania posta}
   \label{add_post}
 \end{figure}
 Strona zawiera kilka rodzajów wpisów, które można stworzyć na stronie. W aplikacji występują trzy rodzaje postów: 
@@ -105,7 +105,7 @@ Na rysunku \ref{add_listing_post} przedstawiono stronę dodawania wpisu typu \te
   \caption{Strona dodawania posta - \textit{listing}}
   \label{add_listing_post}
 \end{figure}
-Na rysunkach \ref{add_discussion_post}, \ref{add_listing_post} oraz \ref{add_discussion_post} przedstawiono wyświetlanie błędów w przypadku niepoprawnego wprowadzenia danych. Można także zauważyć na tych rysunkach, że jeżeli występują błędy w formularzu, to przycisk dodawania posta jest zablokowany. Po wprowadzeniu poprawnych danych przycisk zostaje odblokowany. Na rysunku \ref{add_valid_post} przedstawiono poprawnie wypełniony formularz dodawania posta.
+Na rysunkach \ref{add_question_page}, \ref{add_discussion_post} oraz \ref{add_listing_post} przedstawiono wyświetlanie błędów w przypadku niepoprawnego wprowadzenia danych. Można także zauważyć, że jeżeli występują błędy w formularzu, to przycisk dodawania posta jest zablokowany. Po wprowadzeniu poprawnych danych przycisk zostaje odblokowany. Na rysunku \ref{add_valid_post} przedstawiono poprawnie wypełniony formularz dodawania posta.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/add-edit-delete-posts/create-post-valid.png}
@@ -119,14 +119,14 @@ Po pomyślnym dodaniu posta użytkownik zostaje przeniesiony na stronę ze swoim
   \caption{Strona z postami użytkownika po dodaniu nowego posta}
   \label{add_post_success}
 \end{figure}
-Aby zmodyfikować post należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Edit}. Aby usunąć post należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Delete}. Na rysunku \ref{edit_post} przedstawiono stronę edycji posta. Aby zmodyfikować należy kliknąć przycisk \textit{Update post}. 
+Aby zmodyfikować post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Edit}. Aby usunąć post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Delete}. Na rysunku \ref{edit_post} przedstawiono stronę edycji posta. Aby zmodyfikować, należy kliknąć przycisk \textit{Update post}. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.46]{tests/add-edit-delete-posts/editting-post.png}
   \caption{Strona edycji posta}
   \label{edit_post}
 \end{figure}
-Jeżeli post zostanie poprawnie zmodyfikowany użytkownik zostaje przeniesiony do strony z postami użytkownika. Na rysunku \ref{edit_post_success} przedstawiono pomyślne zmodyfikowanie posta.
+Jeżeli post zostanie poprawnie zmodyfikowany użytkownik, zostaje przeniesiony do strony z postami użytkownika. Na rysunku \ref{edit_post_success} przedstawiono pomyślne zmodyfikowanie posta.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.36]{tests/add-edit-delete-posts/editted-post-success.png}
@@ -135,21 +135,21 @@ Jeżeli post zostanie poprawnie zmodyfikowany użytkownik zostaje przeniesiony d
 \end{figure}
 
 \subsection{Edycja profilu użytkownika}
-Aby zmodyfikować profil użytkownika należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie przechodzimy za pomocą przycisku \textit{My profile}. Na rysunku \ref{profile_page} przedstawiono stronę profilu użytkownika.
+Aby zmodyfikować profil użytkownika, należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie przechodzimy za pomocą przycisku \textit{My profile}. Na rysunku \ref{profile_page} przedstawiono stronę profilu użytkownika.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/edit-profile/profile-page.png}
   \caption{Strona profilu użytkownika}
   \label{profile_page}
 \end{figure}
-Aby zmodyfikować profil należy kliknąć przycisk \textit{Edit profile}. Na rysunku \ref{edit_profile} przedstawiono stronę edycji profilu użytkownika. W formularzu można zmienić takie dane jak numer telefonu, zdjęcie oraz nazwa użytkownika. Aby zmodyfikować profil należy kliknąć przycisk \textit{Edit profile}.
+Aby zmodyfikować profil, należy kliknąć przycisk \textit{Edit profile}. Na rysunku \ref{edit_profile} przedstawiono stronę edycji profilu użytkownika. W formularzu można zmienić takie dane jak numer telefonu, zdjęcie oraz nazwa użytkownika. Aby zmodyfikować profil należy kliknąć przycisk \textit{Edit profile}.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/edit-profile/edit-profile-form.png}
   \caption{Strona edycji profilu użytkownika}
   \label{edit_profile}
 \end{figure}
-Dodatkowo na stronie profilu można zweryfikować adres email. Aby zweryfikować adres email należy kliknąć przycisk \textit{Verify email}. Następnie na wybrany adres email otrzymujemy maila. W mailu znajduje się link do zweryfikowania adresu email.  Na rysunku \ref{verify_email} przedstawiono stronę profilu użytkownika po zweryfikowaniu adresu email. Strona informuje o wysłaniu maila na podany adres email.
+Dodatkowo na stronie profilu można zweryfikować adres email. Aby zweryfikować adres email, należy kliknąć przycisk \textit{Verify email}. Następnie na wybrany adres email otrzymujemy maila. W mailu znajduje się link do zweryfikowania adresu email.  Na rysunku \ref{verify_email} przedstawiono stronę profilu użytkownika po zweryfikowaniu adresu email. Strona informuje o wysłaniu maila na podany adres email.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.45]{tests/edit-profile/send-verification-email.png}
@@ -170,14 +170,14 @@ Po kliknięciu w link użytkownik zostaje przekierowany do strony weryfikacji st
   \caption{Strona weryfikacji adresu email}
   \label{verify_email_page}
 \end{figure}
-Użytkownik także posiada edytowanie używanego przez siebie urządzenia. Aby zmodyfikować urządzenie należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie po wciśnięciu przycisku \textit{Edit Phone} użytkownik wybierze swoje urządzenie poprzez rozwijane menu. W tym menu zostają wyświetlone dostępne na stronie urządzenia. Na rysunku \ref{edit_phone} przedstawiono stronę edycji urządzenia.
+Użytkownik także posiada edytowanie używanego przez siebie urządzenia. Aby zmodyfikować urządzenie, należy przejść na stronę profilu użytkownika oraz być zalogowanym na stronie. Następnie po wciśnięciu przycisku \textit{Edit Phone} użytkownik wybierze swoje urządzenie poprzez rozwijane menu. W tym menu zostają wyświetlone dostępne na stronie urządzenia. Na rysunku \ref{edit_phone} przedstawiono stronę edycji urządzenia.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/edit-profile/phone-list.png}
   \caption{Strona edycji urządzenia}
   \label{edit_phone}
 \end{figure}
-Po pomyślnej zmianie urządzenia na stronie powiada się powiadomienie o pomyślnej zmianie urządzenia. Na rysunku \ref{edit_phone_success} przedstawiono stronę profilu użytkownika po pomyślnej zmianie urządzenia.
+Po pomyślnej zmianie urządzenia na stronie, pojawia się powiadomienie o pomyślnej zmianie urządzenia rysunek \ref{edit_phone_success}.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.44]{tests/edit-profile/updated-user-device.png}
@@ -186,14 +186,79 @@ Po pomyślnej zmianie urządzenia na stronie powiada się powiadomienie o pomyś
 \end{figure}
 
 \subsection{Sortowanie i wyświetlanie telefonów}
-Aby wyświetlić listę telefonów należy przejść na podstronę o nazwie \textit{Phones}. Na tej stronie wyświetlane są wszystkie dostępne na stronie telefony. Telefony na stronie są grupowane ze względu na producenta. Na rysunku \ref{phones_page} przedstawiono stronę z listą telefonów.
+Aby wyświetlić listę telefonów, należy przejść na podstronę o nazwie \textit{Phones}. Na tej stronie wyświetlane są wszystkie dostępne na stronie telefony. Telefony na stronie są grupowane ze względu na producenta. Na rysunku \ref{phones_page} przedstawiono stronę z listą telefonów.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.42]{tests/display-phones/phone-page.png}
   \caption{Strona z listą telefonów}
   \label{phones_page}
 \end{figure}
-Zastosowana technika \textit{lazy loading} pozwoliła na opóźnienie władowania zdjęć telefonów. Technika ta pozwala na opóźnienie ładowania statycznych plików jak zdjęcia. Obecnie przeglądarki obsługują przechowywanie zdjęć w pamięci podręcznej, co pozwala na ładowanie zdjęć z pamięci podręcznej. Pozwoliło to na szybsze ładowanie strony. Na serwer zostają przesyłane parametry jak: numer strony, liczba elementów na stronie oraz tryb sortowania. Użytkownik na stronie może zmienić tryb sortowania. Język Python udostępnia możliwość łatwą możliwość paginacji. Ta metoda nazywa się cięciem. W algorytmie \ref{slice_example} przedstawiono  został przedstawiony kod odpowiedzialny za paginację telefonów.
+Zastosowana technika \textit{lazy loading} pozwoliła na opóźnienie załadowania zdjęć telefonów. Technika ta pozwala na opóźnienie ładowania statycznych plików jak zdjęcia. Obecnie przeglądarki obsługują przechowywanie zdjęć w pamięci podręcznej, co pozwala na ładowanie zdjęć z pamięci podręcznej. Pozwoliło to na szybsze ładowanie strony. Na serwer zostają przesyłane parametry jak: numer strony, liczba elementów na stronie oraz tryb sortowania. Użytkownik na stronie może zmienić tryb sortowania. Język Python udostępnia możliwość łatwą możliwość paginacji. Ta metoda nazywa się cięciem. W algorytmie \ref{slice_example} przedstawiono został przedstawiony kod odpowiedzialny za paginację telefonów.
+
+Aby zmienić tryb sortowania, należy wybrać odpowiednią opcję z rozwijanego menu. Na rysunku \ref{reverse_sorting} przedstawiono zmianę trybu sortowania na \textit{Descending}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{tests/display-phones/phone-sorting-reverse.png}
+  \caption{Strona z listą telefonów po zmianie trybu sortowania}
+  \label{reverse_sorting}
+\end{figure}
+
+\subsection{Porównanie trzech telefonów}
+Aby porównać telefony, należy przejść na podstronę o nazwie \textit{Compare}. Użytkownik wybiera za pomocą rozwijanych menu trzy urządzenia. Urządzenia pobierane są z serwera, a następnie wyświetlane są na stronie. Każde wybranie urządzenia powoduje załadowanie informacji o urządzeniu. Na rysunku \ref{compare_page} przedstawiono stronę porównania przed wybraniem urządzeń do porównania.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{tests/compare-devices/compare-page.png}
+  \caption{Strona z listą telefonów po zmianie trybu sortowania}
+  \label{compare_page}
+\end{figure}
+
+Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Informacje dotyczące urządzeń są przedstawione w formie tabeli. Na rysunku \ref{compare_three_devices} przedstawiono stronę porównania po wybraniu urządzeń.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.36]{tests/compare-devices/compare-three-devices.png}
+  \caption{Wynik wykonania porównania trzech urządzeń}
+  \label{compare_three_devices}
+\end{figure}
+
+\section{Implementacja wybranych miejsc aplikacji}
+W tej sekcji znajdują się opisy implementacji wybranych miejsc aplikacji. 
+
+\subsection{Pobieranie informacji do porównania}
+Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Ta statyczna metoda nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie jednocześnie kilku zapytań asynchronicznych. Pozwala to na szybsze pobieranie informacji o urządzeniach. W ten sposób czekamy na wszystkie zapytania jednocześnie, co zmniejsza czas oczekiwania na dane. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
+
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize,
+    ]{TypeScript}
+    const getComparison = async (deviceKeys: string[]) => {
+      const comparisons: { [key: string]: DeviceDetails } = {}
+      const promises = deviceKeys.map(async (key) => {
+        return await getDetails(key)
+      })
+      const data = await Promise.all(promises)
+      data.forEach((device: DeviceDetails) => {
+        comparisons[device.key] = device
+      })
+      return comparisons
+    }
+  \end{minted}
+  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
+  \label{getting_devices}
+\end{code}
+Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakich typów danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}. 
+
+
+\subsection{Pobieranie informacji o urządzeniach}
+W bazie danych znajduje się około 3500 telefonów. Załadowanie takiej ilości danych na stronie powoduje długi czas ładowania strony. Aby zredukować czas ładowania strony, zastosowano technikę \textit{Lazy Loading}. Pozwala ona na podzielenie danych na mniejsze fragmenty, co przekłada się na krótszy czas oczekiwania na nie. W ten sposób zwiększa się wydajność aplikacji.
+
+W języku Python występuje technika nazywająca się \textit{slicing}, pozwala ona wydzielić z danej listy danych ich część. Dzięki składni języka python, slicing odbywa się za pomocą wprowadzeniu indeksów oraz dwukropka. Składania ta zapewnia też możliwość odczytywania ostatniej wartości za pomocą indeksu $-1$. W algorytmie \ref{slice_example} przedstawiono sposób wykorzystania tej techniki.
+
 \begin{code}[H]
   \begin{minted}[
     frame=lines,
@@ -229,39 +294,16 @@ Zastosowana technika \textit{lazy loading} pozwoliła na opóźnienie władowani
           return Response(str(e), status=500)    
   \end{minted}
   \centering
-  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
+  \caption{Punkt końcowy aplikacji pozwalający na pobranie informacji o urządzeniach}
   \label{slice_example}
 \end{code}
-Aby zmienić tryb sortowania należy wybrać odpowiednią opcję z rozwijanego menu. Na rysunku \ref{reverse_sorting} przedstawiono zmianę trybu sortowania na \textit{Descending}.
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.42]{tests/display-phones/phone-sorting-reverse.png}
-  \caption{Strona z listą telefonów po zmianie trybu sortowania}
-  \label{reverse_sorting}
-\end{figure}
 
-\subsection{Porównanie trzech telefonów}
-Aby porównać telefony należy przejść na podstronę o nazwie \textit{Compare}. Użytkownik wybiera za pomocą rozwijanych menu trzy urządzenia. Urządzenia pobierane są z serwera, a następnie wyświetlane są na stronie. Każde wybranie urządzenia powoduje władowanie informacji o urządzeniu. Na rysunku \ref{compare_page} przedstawiono stronę porównania przed wybraniem urządzeń do porównania.
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.42]{tests/compare-devices/compare-page.png}
-  \caption{Strona z listą telefonów po zmianie trybu sortowania}
-  \label{compare_page}
-\end{figure}
+\subsection{Edycja postów}
+W aplikacji zaimplementowano edycję postów. Odbywa się ona poprzez wczytanie kolekcji postów z bazy danych Firestore \cite{firestore} oraz jej modyfikację. Dodatkowo w celu zabezpieczenie punktu końcowego aplikacji, zastosowano mechanizm autoryzacji. W tym celu wykorzystano token JWT |\ref{JWT}|, jest on weryfikowany poprzez usługę Firebase. Po zdekodowaniu tokena otrzymano identyfikator użytkownika, który służy do stworzenia odpowiedniego dokumentu w usłudze Firestore. 
 
-Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Informacje dotyczące urządzeń są przedstawione w formie tabeli. Na rysunku \ref{compare_three_devices} przedstawiono stronę porównania po wybraniu urządzeń.
+Po uzyskaniu identyfikatora użytkownika przeszukujemy kolekcję \textit{post} w celu znalezienia odpowiedniego dokumentu. W dokumencie znajduje się lista postów, które należą do użytkownika. Po odczytaniu postów, w kolekcji jest znajdowany post o podanym identyfikatorze. Następnie następuje modyfikacja posta oraz zapisanie go w bazie danych.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.36]{tests/compare-devices/compare-three-devices.png}
-  \caption{Wykonanie porównania trzech urządzeń}
-  \label{compare_three_devices}
-\end{figure}
-
-\section{Implementacja wybranych miejsc aplikacji}
-
-\subsection*{Pobieranie informacji o urządzeniach}
-Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Metoda ta nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie kilku zapytań asynchronicznych jednocześnie. Pozwala to na szybsze pobieranie informacji o urządzeniach. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
+W algorytmie \ref{edit_post_fragment} przedstawiono sposób wykorzystania tej techniki.
 
 \begin{code}[H]
   \begin{minted}[
@@ -270,33 +312,133 @@ Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występując
     baselinestretch=1.2,
     autogobble=true,
     breaklines,
-    fontsize=\footnotesize,
-    ]{Typescript}
-    const getComparison = async (deviceKeys: string[]) => {
-      const comparisons: { [key: string]: DeviceDetails } = {}
-      const promises = deviceKeys.map(async (key) => {
-        return await getDetails(key)
-      })
-      const data = await Promise.all(promises)
-      data.forEach((device: DeviceDetails) => {
-        comparisons[device.key] = device
-      })
-      return comparisons
-    }
+    fontsize=\footnotesize
+  ]{python3}
+  @FORUM.route("/post", methods=["PUT"])
+  def edit_post() -> Response:
+      try:
+          json_data: Dict[str, Any] = json.loads(request.data)
+          headers: Dict[str, Any] = request.headers
+          token: str = str(headers["Authorization"]).split(" ")[1]
+          assert token is not None, "Authorization header is required"
+          user_uid: str = verify_token(token)["uid"]
+          post_id: str = json_data.get("id", "")
+          db: FirestoreClient = current_app.config.get("FIRESTORE", None)
+          posts: List[Dict[str, Any]] = get_docs_of_user(db, user_uid)
+          edited_posts: List[Dict[str, Any]] = h_edit_post(posts, post_id, json_data)
+          db.collection("posts").document(user_uid).set({"posts": edited_posts})
+          return Response(f"Edited post with id: {post_id}.", status=200)
+      except Exception as e:
+          return Response(str(e), status=500)
   \end{minted}
-  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
-  \label{getting_devices}
+  \caption{Zapis posta w bazie danych}
+  \label{edit_post_fragment}
 \end{code}
-Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakie typy danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}.
+
+Dodatkowo w algorytmie \ref{edit_post_fragment} można zauważyć użycie biblioteki \textit{dataclasses}. Jest ona wykorzystywana do tworzenia klas, które reprezentują dane. W tym przypadku została wykorzystana do reprezentowania posta. Należy pamiętać, że obiektów klasy \textit{Post} nie można zapisać bezpośrednio w bazie danych. Należy skonwertować dany post do postaci słownika za pomocą metody \textit{asdict}. Jest to metoda pochodzą z biblioteki \textit{dataclasses}.
+
+Wadą tego rozwiązania jest brak typów, które pozwoliły by na podpowiadanie w edytorze kodu. W celu zminimalizowania tego problemu, zastosowano adnotacje typów. Wydajność tego rozwiązania jest niewielka, ze względu na odczyt wszystkich postów użytkownika. Ta wydajność jest zależna od liczby postów użytkownika. 
+
+Dodatkowym usprawnieniem tego rozwiązania mogłoby być zastosowanie mechanizmu paginacji. Dzięki zastosowania tego usprawnienia zostanie zwiększona wydajność aplikacji. 
+
+\subsection{Dodawania postów}
+
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize
+  ]{python3}
+  @FORUM.route("/post", methods=["POST"])
+  def create_new_post() -> Response:
+      try:
+          data: Dict[str, Any] = json.loads(request.data)
+          headers: Dict[str, Any] = request.headers
+          token: str = str(headers["Authorization"]).split(" ")[1]
+          assert token is not None, "Authorization header is required"
+          user_uid: str = verify_token(token)["uid"]
+          user = get_user_information(user_uid)
+          db: FirestoreClient = current_app.config.get("FIRESTORE", None)
+          new_post = Post(
+              id=str(uuid1()),
+              uid=user_uid,
+              title=data.get("title", ""),
+              description=data.get("description", ""),
+              type=data.get("type", ""),
+              device_key=data.get("device_key", ""),
+              user=user,
+          )
+          posts: List[Dict[str, Any]] = get_docs_of_user(db, user_uid)
+          posts.append(asdict(new_post))
+          db.collection("posts").document(user_uid).set({"posts": posts})
+          return jsonify({"post": asdict(new_post)})
+      except Exception as e:
+          return Response(str(e), status=500)
+  \end{minted}
+  \caption{Dodanie posta w bazie danych}
+  \label{create_new_post_fragment}
+\end{code}
 
 
+\subsection{Usuwanie postów}
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize
+  ]{python3}
+  @FORUM.route("/post", methods=["DELETE"])
+  def delete_post() -> Response:
+      try:
+          data: Dict[str, Any] = json.loads(request.data)
+          headers: Dict[str, Any] = request.headers
+          token: str = str(headers["Authorization"]).split(" ")[1]
+          assert token is not None, "Authorization header is required"
+          user_uid: str = verify_token(token)["uid"]
+          post_id: str = data.get("post_id", "")
+          db = current_app.config.get("FIRESTORE", None)
+          posts: List[Dict[str, Any]] = get_docs_of_user(db, user_uid)
+          post: Optional[Dict[str, Any]] = find_post_by_id(post_id, posts)
+          assert post is not None, f"Post with id: {post_id} not found!"
+          posts.remove(post)
+          db.collection("posts").document(user_uid).set({"posts": posts})
+          return Response(f"Removed post with id: {post_id}.", status=200)
+      except Exception as e:
+          return Response(str(e), status=500)
+  \end{minted}
+  \caption{Usuwanie posta z bazy danych}
+  \label{delete_post_fragment}
+\end{code}
 
 
+\subsection{Dodawanie zdjęć do Google Cloud Store}
 
-% \section{Metoda testowania}
-% W tej sekcji przedstawione są metoda testowania, które zostały wykorzystane w projekcie. W tym rozdziale także zostały wymienione miejsca implementacji, które zostały przetestowane za pomocą tych metod. 
-
-% \subsection{Testy manualne}
-% Testy manualne jest to rodzaj testów, gdzie do ich wykonania potrzebny jest człowiek. Dzięki takiemu podejściu tester sprawdza daną funkcjonalność, pozwala to także na szybsze zgłoszenie błędów. Z danego testu są wygenerowane raporty, które są przesyłane do programisty, który ma za zadanie naprawić błędy. Dodatkowo w raporcie zostały załączone zrzuty ekranu, które pokazują dokładnie, gdzie wystąpił błąd. Atutem takiego rozwiązania jest także brak dodatkowej konfiguracji narzędzi potrzebnych do wykonania testów.
-
-% Podejście sprawia kilka problemów, najważniejszym z nich jest zdecydowanie większa ilość czasu, które jest potrzebne do wykonania testów. Dodatkowo, jeśli tester nie jest doświadczony, może popełnić błędy, które mogą być trudne do zauważenia. Ta własność powoduje także mniejszą dokładność. Wadą tego rozwiązania jest także brak możliwości uruchomienia dużej ilości testów jednocześnie, ponieważ jesteśmy ograniczeni zasobami ludzkimi. 
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize
+  ]{python3}
+  def upload_to_images_storage(
+    files: Dict[str, FileStorage], folder_name: str, client: storage.Client
+) -> List[str]:
+    file_names: List[str] = []
+    bucket: storage.Bucket = list(client.list_buckets())[0]
+    for _, file_data in files.items():
+        blob = bucket.blob(f"{folder_name}/{file_data.filename}")
+        blob.upload_from_file(file_data.stream, content_type="image/jpeg")
+        file_names.append(blob.public_url)
+    return file_names
+  \end{minted}
+  \caption{Dodanie zdjęć do Google Cloud Storage}
+  \label{upload_to_images_storage_fragment}
+\end{code}
