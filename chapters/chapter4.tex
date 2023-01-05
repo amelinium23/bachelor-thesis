@@ -507,7 +507,47 @@ W algorytmie \ref{post_from_gsm_arena} przedstawiono sposób wysyłania informac
 Należy nadmienić, że w przypadku tych dwóch funkcji, zwracana są nam dane w formie \textit{JSON} \ref{JSON}. Pozwala to na łatwe odczytanie danych, które są zwracane przez serwis.
 
 \subsection{Stworzenie funkcji wywoływanych okresowo}
+W trakcie pracy nad projektem zauważono, że występuje potrzeba zapisywania informacji o telefonach w bazie danych. Ta dodatkowa funkcjonalność została dodana ze względu na ograniczenia występujące w serwisie \textit{GSM Arena API}. Serwer ze względu na ograniczenia Google App Script \cite{google_app_script}, może wykonać tylko 50 zapytań. Zatem użytkownik jedynie wysyła zapytania do bazy o telefony.
 
+Zatem, aby telefony w bazie danych były aktualne, następuje zapisanie co godziny telefonów do bazy danych. W tym celu został zastosowany APScheduler \cite{flask_apscheduler}. Jest to biblioteka, która pozwala na wykonywanie zadań okresowo (\textit{cronjob}).
+
+Aby rozpocząć pracę z \textit{APScheduler} należy go skonfigurować oraz dodać zadania. W tym celu została stworzona funkcja, która specyfikuje interwał czasowy, w którym zadanie ma być wykonywane, identyfikator, czas, w którym powtarza wywołanie po nieudanej próbie wykonania zadania oraz typ zadania. Dodatkowo biblioteka ta integruje się z obiektem \textit{Flask}, co powoduje to, że APScheduler może wykonywać zadania w kontekście obiektu \textit{Flask}.
+
+W algorytmie \ref{configure_apscheduler} przedstawiono sposób konfiguracji APScheduler.
+
+\begin{code}[H]
+  \begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    autogobble=true,
+    breaklines,
+    fontsize=\footnotesize
+  ]{python3}
+    def get_app_scheduler(app: Flask) -> APScheduler:
+    scheduler = APScheduler(app=app)
+    with app.app_context():
+        scheduler.add_job(
+            id="save_brands_to_db",
+            func=lambda: brand_task(app),
+            trigger="interval",
+            seconds=3600,
+            misfire_grace_time=900,
+        )
+        scheduler.add_job(
+            id="save_devices_to_db",
+            func=lambda: device_task(app),
+            trigger="interval",
+            seconds=3600,
+            misfire_grace_time=900,
+        )
+    return scheduler
+  \end{minted}
+  \caption{Konfiguracja APScheduler}
+  \label{configure_apscheduler}
+\end{code}
+
+W przypadku tej aplikacji, zadanie polega na pobraniu listy telefonów z serwisu \textit{GSM Arena API} i zapisaniu ich do bazy danych. W algorytmie \ref{device_task} przedstawiono sposób wywoływania funkcji okresowo odpowiedzialnej za odczyt i zapis listy telefonów w bazie danych.
 
 \begin{code}[H]
   \begin{minted}[
@@ -529,6 +569,8 @@ Należy nadmienić, że w przypadku tych dwóch funkcji, zwracana są nam dane w
   \caption{Przykład funkcji wywoływanej okresowo - pobieranie listy urządzeń}
   \label{device_task}
 \end{code}
+
+W celu zminimalizowania ilości zapytań do \textit{GSM Arena API} została stworzona funkcja, która wysyła zapytanie o producentów do \textit{GSM Arena API}, a następnie producenci są zapisywani w bazie danych. W algorytmie \ref{brand_task} przedstawiono funkcji działającej okresowo.
 
 \begin{code}[H]
   \begin{minted}[
@@ -552,3 +594,5 @@ Należy nadmienić, że w przypadku tych dwóch funkcji, zwracana są nam dane w
   \caption{Przykład funkcji wywoływanej okresowo - pobieranie listy producentów}
   \label{brand_task}
 \end{code}
+
+
