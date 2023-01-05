@@ -14,7 +14,9 @@ W tej sekcji znalazły się następujące funkcjonalności:
 \end{enumerate}
 
 \subsection{Logowanie i rejestracja użytkownika}
-Aby móc zalogować się na stronę, należy posiadać przygotowany adres email. Następnie przechodzimy do ekranu logowania, za pomocą menu w prawym górnym rogu. Na rysunku \ref{login_menu} przedstawiono przycisk umożliwiający przejście do ekranu logowania.
+Aby móc zalogować się na stronę, należy posiadać przygotowany adres email. Następnie przechodzimy do ekranu logowania, za pomocą menu w prawym górnym rogu.
+
+Na rysunku \ref{login_menu} przedstawiono przycisk umożliwiający przejście do ekranu logowania.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/Login-button.png}
@@ -28,7 +30,9 @@ Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. S
   \caption{Strona logowania oraz rejestracji}
   \label{login_page}
 \end{figure}
-Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać prawidłowe hasło. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania na stronę główną po zalogowaniu. 
+Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać prawidłowe hasło. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. 
+
+Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania na stronę główną po zalogowaniu. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/login-sucessful.png}
@@ -37,7 +41,9 @@ Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby pop
 \end{figure}
 Dodatkowo jeżeli użytkownik posiada zdjęcie profilowe, jest ono wyświetlane w prawym górnym rogu strony. Do zdjęcia jest również dodany przycisk, który pozwala na przejście do profilu użytkownika.
 
-W przypadku rejestracji jeżeli użytkownik wpisze poprawne, dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego. Na rysunku \ref{register_page} przedstawiono formularz rejestracji.
+W przypadku rejestracji jeżeli użytkownik wpisze poprawne, dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego.
+
+Na rysunku \ref{register_page} przedstawiono formularz rejestracji.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/login-register/register-form.png}
@@ -253,7 +259,6 @@ Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występując
 \end{code}
 Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakich typów danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}. 
 
-
 \subsection{Pobieranie informacji o urządzeniach}
 W bazie danych znajduje się około 3500 telefonów. Załadowanie takiej ilości danych na stronie powoduje długi czas ładowania strony. Aby zredukować czas ładowania strony, zastosowano technikę \textit{Lazy Loading}. Pozwala ona na podzielenie danych na mniejsze fragmenty, co przekłada się na krótszy czas oczekiwania na nie. W ten sposób zwiększa się wydajność aplikacji.
 
@@ -342,7 +347,7 @@ Wadą tego rozwiązania jest brak typów, które pozwoliły by na podpowiadanie 
 Dodatkowym usprawnieniem tego rozwiązania mogłoby być zastosowanie mechanizmu paginacji. Dzięki zastosowania tego usprawnienia zostanie zwiększona wydajność aplikacji. 
 
 \subsection{Dodawania postów}
-W celu dodania posta do bazy danych, należy wykorzystać algorytm \ref{create_new_post_fragment}. Tak samo jak w przypadku edycji posta, należy zdekodować, aby uzyskać informacje o użytkowniku. Tak samo jak w przypadku edytowania posta, należy odczytać wszystkie posty użytkownika. Następnie należy dodać nowy post do listy postów użytkownika. Następnie należy zapisać listę postów użytkownika w bazie danych.
+W celu dodania posta do bazy danych, należy skomunikować się z bazą oraz pobrać listę postów w celu jej modyfikacji. Tak samo jak w przypadku edycji posta, należy zdekodować token \textit{JWT}, aby uzyskać informacje o użytkowniku. Tak samo jak w przypadku edytowania posta, należy odczytać wszystkie posty użytkownika. Następnie należy dodać nowy post do listy postów użytkownika. Następnie należy zapisać listę postów użytkownika w bazie danych.
 
 Również w tym przypadku zastosowano biblioteki \textit{dataclasses}, aby reprezentować posty. Dodatkowo, aby zadbać o integralność danych w bazie danych została zastosowano biblioteka \textit{uuid}. Posłużyła ona do generowania unikalnych identyfikatorów postów.
 
@@ -388,6 +393,9 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
 \end{code}
 
 \subsection{Usuwanie postów}
+W celu usunięcia posta z bazy danych, należy pobrać listę postów użytkownika oraz zmodyfikować, a następnie wysłać zapisaną listę postów użytkownika do bazy danych. Tak samo jak w przypadku dodawania bądź edycji należy pobrać informacje o użytkowniku. Uzyskane jest to poprzez zdekodowanie tokena \textit{JWT}. W ten sposób jesteśmy odczytać identyfikator użytkownika, co pozwala na odczytanie listy postów użytkownika.
+
+Po odczytaniu listy, należy znaleźć post o podanym identyfikatorze. Następnie należy usunąć post z listy postów użytkownika. Na samym końcu zapisujemy stan listy postów w bazie danych. W algorytmie \ref{delete_post_fragment} przedstawiono sposób usuwania posta z bazy danych.
 
 \begin{code}[H]
   \begin{minted}[
@@ -421,8 +429,14 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
   \label{delete_post_fragment}
 \end{code}
 
+Dodatkowo można zauważyć, że zastosowano obsługę błędów w postaci wyjątków. W przypadku wystąpienia błędu, zwracany jest kod odpowiedzi HTTP 500. W przypadku braku błędu, zwracany jest kod odpowiedzi HTTP 200 oraz odpowiedź w formacie \textit{JSON} |\ref{JSON}|. 
 
 \subsection{Dodawanie zdjęć do Google Cloud Store}
+Aby dodać zdjęcia do Google Cloud Store, należy wykorzystać bibliotekę \textit{google-cloud-storage}. W celu dodania zdjęć należy skorzystać z specjalnego obiektu \textit{FileStorage} z biblioteki \textit{werkzeug}. Przechowuje on informacje o nazwie pliku ze zdjęciem oraz strumień z danymi na jego temat. 
+
+Aby zachować rozróżnienie w nazwach zdjęć, zastosowano grupowanie po identyfikatorach postów. Każdy post, który zawiera zdjęcia posiada swój unikalny katalog nazwany za pomocą identyfikatora posta. W ten sposób można bardzo szybko zlokalizować zdjęcia danego posta. W każdym z katalogów znajdują się zdjęcia danego posta, nazwane zgodnie z tym co przesłał na serwer.
+
+W algorytmie \ref{upload_to_images_storage_fragment} przedstawiono sposób dodawania zdjęć do Google Cloud Store. 
 
 \begin{code}[H]
   \begin{minted}[
@@ -449,6 +463,11 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
 \end{code}
 
 \subsection{Pobieranie informacji z GSM Arena API}
+Aby pobrać informacje o telefonie z serwisu \textit{GSM Arena API}, uzyskano to za pomocą biblioteki \textit{requests}. Jest to biblioteka, która umożliwia wysyłanie żądań HTTP na podany adres. W przypadku pobierania danych z internetu użyto metody \textit{GET}. W celu wysłania danych do serwisu znajdującego się w sieci, należy skorzystać z metody \textit{POST}.
+
+Zgodnie z dokumentacją \textit{GSM Arena API} \cite{gsm_arena_api_reference} występują tam dwie metody żądań: \textit{GET} oraz \textit{POST}. W przypadku pobierania informacji o telefonach wykorzystujemy metodę \textit{GET}. Dodatkowo przekazujemy funkcji ukazanej w algorytmie \ref{get_from_gsm_arena} parametry, które są wymagane przez serwis. W tych parametrach jest zawarta ścieżka, co pozwala na pobranie danych z odpowiedniego punktu końcowego \textit{GSM Arena API}.
+
+W algorytmie \ref{get_from_gsm_arena} przedstawiono sposób pobierania informacji z serwisu \textit{GSM Arena API}.
 
 \begin{code}[H]
   \begin{minted}[
@@ -463,11 +482,11 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
     req = r.get(f"{GSM_ARENA_API_URL}{search}", params)
     return req.json()
   \end{minted}
-  \caption{Dodanie zdjęć do Google Cloud Storage}
+  \caption{Żądanie GET do serwisu GSM Arena API}
   \label{get_from_gsm_arena}
 \end{code}
 
-
+W algorytmie \ref{post_from_gsm_arena} przedstawiono sposób wysyłania informacji z serwisu \textit{GSM Arena API}.
 \begin{code}[H]
   \begin{minted}[
     frame=lines,
@@ -481,10 +500,11 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
     req = r.post(GSM_ARENA_API_URL, data=json.dumps(params))
     return req.json()
   \end{minted}
-  \caption{Dodanie zdjęć do Google Cloud Storage}
+  \caption{Żądanie POST do serwisu GSM Arena API}
   \label{post_from_gsm_arena}
 \end{code}
 
+Należy nadmienić, że w przypadku tych dwóch funkcji, zwracana są nam dane w formie \textit{JSON} \ref{JSON}. Pozwala to na łatwe odczytanie danych, które są zwracane przez serwis.
 
 \subsection{Stworzenie funkcji wywoływanych okresowo}
 
@@ -506,7 +526,7 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
         parsed_devices = [asdict(device) for device in devices]
         db.collection("devices").document("devices").set({"devices": parsed_devices})
   \end{minted}
-  \caption{Dodanie zdjęć do Google Cloud Storage}
+  \caption{Przykład funkcji wywoływanej okresowo - pobieranie listy urządzeń}
   \label{device_task}
 \end{code}
 
@@ -529,6 +549,6 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
         ]
         db.collection("brands").document("brands").set({"brands": dicts_brands})
   \end{minted}
-  \caption{Dodanie zdjęć do Google Cloud Storage}
+  \caption{Przykład funkcji wywoływanej okresowo - pobieranie listy producentów}
   \label{brand_task}
 \end{code}
