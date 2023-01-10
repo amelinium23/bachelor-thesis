@@ -3,6 +3,7 @@
 left to right direction
 
 actor "Użytkownik zarejestrowany" as user
+actor "Użytkownik niezarejestrowany" as unregisterUser
 
 usecase "Dodawanie, edycja i usuwanie opinii" as UC1
 usecase "Dodawanie, edycja i usuwanie postów" as UC2
@@ -12,6 +13,7 @@ usecase "Przeglądania oraz sortowania swoich postów" as UC5
 usecase "Reagowanie na posty" as UC6
 usecase "Dodawanie, edycja i usuwanie opinii" as UC7
 
+unregisterUser <|-- user
 user -- UC1
 user -- UC2
 user -- UC3

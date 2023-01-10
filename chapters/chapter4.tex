@@ -1,4 +1,4 @@
-\section{Opis działania aplikacji}
+\section{Opis aplikacji}
 W tej sekcji są przedstawiono wybrane miejsca implementacji. Wymienione są najważniejsze funkcjonalności, które zostały napisane w rozdziale \ref{ideal_solution}.
 
 W tej sekcji znalazły się następujące funkcjonalności:
@@ -35,7 +35,7 @@ Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby pop
 Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania na stronę główną po zalogowaniu. 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.47]{tests/login-register/login-sucessful.png}
+  \includegraphics[scale=0.35]{tests/login-register/login-sucessful.png}
   \caption{Przykład poprawnego przekierowania na stronę główną po zalogowaniu.}
   \label{login_success}
 \end{figure}
@@ -46,7 +46,7 @@ W przypadku rejestracji jeżeli użytkownik wpisze poprawne, dane zostaje przeni
 Na rysunku \ref{register_page} przedstawiono formularz rejestracji.
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.47]{tests/login-register/register-form.png}
+  \includegraphics[scale=0.35]{tests/login-register/register-form.png}
   \caption{Formularz rejestracji}
   \label{register_page}
 \end{figure}
@@ -55,7 +55,7 @@ Po poprawnej rejestracji użytkownik jest przenoszony na stronę główną. Doda
 Na rysunku \ref{success_register} przedstawiono przykład poprawnego przekierowania po udanej rejestracji.
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.45]{tests/login-register/register-success.png}
+  \includegraphics[scale=0.4]{tests/login-register/register-success.png}
   \caption{Przykład poprawnego przekierowania po udanej rejestracji.}
   \label{success_register}
 \end{figure}
@@ -227,8 +227,8 @@ Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Inform
   \label{compare_three_devices}
 \end{figure}
 
-\section{Implementacja wybranych miejsc aplikacji}
-W tej sekcji znajdują się opisy implementacji wybranych miejsc aplikacji. 
+\section{Implementacja aplikacji}
+W tej sekcji znajdują się opisy implementacji wybranych miejsc aplikacji.
 
 \subsection{Pobieranie informacji do porównania}
 Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Ta statyczna metoda nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie jednocześnie kilku zapytań asynchronicznych. Pozwala to na szybsze pobieranie informacji o urządzeniach. W ten sposób czekamy na wszystkie zapytania jednocześnie, co zmniejsza czas oczekiwania na dane. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.

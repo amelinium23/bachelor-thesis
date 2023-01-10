@@ -31,9 +31,12 @@
 
 % bibliography
 \usepackage{csquotes}
+\usepackage{hyperref}
 \usepackage[style=numeric,sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
-\usepackage{hyperref}
+\renewbibmacro*{urldate}{
+    (Ostatni dostęp: \printfield{urlday}/\printfield{urlmonth}/\printfield{urlyear})
+}
 
 % algorithms and list of algorithms
 \DeclareCaptionType{code}[Algorytm][Spis algorytmów]
@@ -46,14 +49,9 @@
 \floatstyle{plaintop}
 \restylefloat{table}
 
-% other
-% custom command for printing a date in the format dd.mm.yyyy
-\def\mydate{\leavevmode\hbox{\twodigits\month.\twodigits\year}}
-\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
-
 \title{Aplikacja webowa do zarządzania informacjami \\ o telefonach komórkowych}
 \author{Piotr Tomczak}
-\date{\L{}\'od\'z, \mydate}
+\date{\L{}\'od\'z, 02.2023}
 
 % setup links style
 \hypersetup{
@@ -102,10 +100,10 @@
 \chapter{Projekt aplikacji}
 \input{chapters/chapter3}
 
-\chapter{Aplikacja - Rate my phone}
+\chapter{Aplikacja - \textit{Rate my phone}}
 \input{chapters/chapter4}
 
-\chapter{Podsumowanie i wnioski}
+\chapter{Podsumowanie}
 \input{chapters/chapter5}
 
 \printbibliography[heading=bibintoc, title=Bibliografia]
