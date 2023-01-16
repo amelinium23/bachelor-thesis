@@ -30,7 +30,7 @@ Następnie jesteśmy przenoszeni na ekran, na którym możemy się zalogować. S
   \caption{Strona logowania oraz rejestracji}
   \label{login_page}
 \end{figure}
-Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby poprawnie się zalogować, należy wpisać prawidłowe hasło. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. 
+Aplikacja informuje użytkownika o wprowadzeniu nieprawidłowych danych. Aby móc się zarejestrować, należy wpisać adres email, który nie jest już zarejestrowany w bazie danych oraz hasło, które powinno zawierać przynajmniej 8 znaków, małe i duże litery, cyfry oraz znak specjalny. Aby poprawnie sie zalogować, należy wpisać prawidłowe hasło. Po poprawnym zalogowaniu użytkownik jest przenoszony na stronę główną. 
 
 Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania na stronę główną po zalogowaniu. 
 \begin{figure}[H]
@@ -59,14 +59,14 @@ Na rysunku \ref{success_register} przedstawiono przykład poprawnego przekierowa
   \caption{Przykład poprawnego przekierowania po udanej rejestracji.}
   \label{success_register}
 \end{figure}
-W przypadku napotkanych problemów podczas, użytkownik jest informowanych o tych w błędach za pomocą powiadomień. Wszystkie powiadomienia są wyświetlane w prawym dolnym rogu. W zależności od rodzaju powiadomienia są one rozróżnione za pomocą kolorów. Na rysunku \ref{register_error} przedstawiono przykład błędnego wprowadzenia danych.
+W przypadku napotkanych problemów, użytkownik jest informowanych o tych w błędach za pomocą powiadomień. Wszystkie powiadomienia są wyświetlane w prawym dolnym rogu. W zależności od rodzaju powiadomienia są one rozróżnione za pomocą kolorów. Na rysunku \ref{register_error} przedstawiono przykład błędnego wprowadzenia danych.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{tests/login-register/register-error.png}
   \caption{Błąd wyświetlany w przypadku błędu rejestracji.}
   \label{register_error}
 \end{figure}
-Użytkownik jest informowany o tym błędach w formie podświetlenia danego pola formularza. Jeżeli wartość danej pola jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę.
+Użytkownik jest informowany o błędach w formie podświetlenia danego pola formularza. Jeżeli wartość danej pola jest niepoprawna, to zostanie ona podświetlona na czerwono. Powoduje to zablokowanie przycisku uniemożliwiając możliwość zalogowania się na stronę.
 
 Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia danych.
 \begin{figure}[H]
@@ -77,7 +77,7 @@ Na rysunku \ref{login_error} przedstawiono przykład błędnego wprowadzenia dan
 \end{figure}
 
 \subsection{Dodawanie, edycja i usuwanie postów}
-Aby móc dodać post użytkownik musi być zalogowany. Dodawanie postów odbywa się po kliknięciu przycisku dodaj post, użytkownik zostaje przekierowany na stronę dodawania posta. Przycisk ten pozostaje niewidoczny, dopóki użytkownik nie będzie zalogowany. Na rysunku \ref{add_post} przedstawiono stronę forum skąd można przejść do podstrony dodania posta.
+Aby móc dodać post, użytkownik musi być zalogowany. Dodawanie postów odbywa się po kliknięciu przycisku dodaj post, użytkownik zostaje przekierowany na stronę dodawania posta. Przycisk ten pozostaje niewidoczny, dopóki użytkownik nie będzie zalogowany. Na rysunku \ref{add_post} przedstawiono stronę forum skąd można przejść do podstrony dodania posta.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.47]{tests/add-edit-delete-posts/add-post.png}
@@ -125,7 +125,7 @@ Po pomyślnym dodaniu posta użytkownik zostaje przeniesiony na stronę ze swoim
   \caption{Strona z postami użytkownika po dodaniu nowego posta}
   \label{add_post_success}
 \end{figure}
-Aby zmodyfikować post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Edit}. Aby usunąć post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Delete}. Na rysunku \ref{edit_post} przedstawiono stronę edycji posta. Aby zmodyfikować, należy kliknąć przycisk \textit{Update post}. 
+Aby zmodyfikować post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Edit}. Aby usunąć post, należy przejść na stronę z postami użytkownika i kliknąć przycisk \textit{Delete}. Na rysunku \ref{edit_post} przedstawiono stronę edycji posta. Aby zmodyfikować post, należy kliknąć przycisk \textit{Update post}. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.46]{tests/add-edit-delete-posts/editting-post.png}
@@ -214,7 +214,7 @@ Aby porównać telefony, należy przejść na podstronę o nazwie \textit{Compar
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.42]{tests/compare-devices/compare-page.png}
-  \caption{Strona z listą telefonów po zmianie trybu sortowania}
+  \caption{Strona z możliwością wyboru telefonów do porównania}
   \label{compare_page}
 \end{figure}
 
@@ -227,7 +227,7 @@ Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Inform
   \label{compare_three_devices}
 \end{figure}
 
-\section{Implementacja aplikacji}
+\section[Implementacja \texorpdfstring{\\ aplikacji}{}]{Implementacja aplikacji}
 W tej sekcji znajdują się opisy implementacji wybranych miejsc aplikacji.
 
 \subsection{Pobieranie informacji do porównania}
@@ -254,7 +254,7 @@ Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występując
       return comparisons
     }
   \end{minted}
-  \caption{Endpoint znajdujący się w aplikacji - pozwala na paginację wykonaną metodą cięcia}
+  \caption{Metoda \textit{Promise.all}}
   \label{getting_devices}
 \end{code}
 Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie jakich typów danych możemy się spodziewać w odpowiedzi. W tym przypadku oczekiwany jest obiekt, który zawiera klucz oraz wartość będącą obiektem typu \textit{DeviceDetails}. 
@@ -262,7 +262,7 @@ Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie ja
 \subsection{Pobieranie informacji o urządzeniach}
 W bazie danych znajduje się około 3500 telefonów. Załadowanie takiej ilości danych na stronie powoduje długi czas ładowania strony. Aby zredukować czas ładowania strony, zastosowano technikę \textit{Lazy Loading}. Pozwala ona na podzielenie danych na mniejsze fragmenty, co przekłada się na krótszy czas oczekiwania na nie. W ten sposób zwiększa się wydajność aplikacji.
 
-W języku Python występuje technika nazywająca się \textit{slicing}, pozwala ona wydzielić z danej listy danych ich część. Dzięki składni języka python, slicing odbywa się za pomocą wprowadzeniu indeksów oraz dwukropka. Składania ta zapewnia też możliwość odczytywania ostatniej wartości za pomocą indeksu $-1$. W algorytmie \ref{slice_example} przedstawiono sposób wykorzystania tej techniki.
+W języku Python występuje technika nazywająca się \textit{slicing}, pozwala ona wydzielić z danej listy danych ich część. Dzięki składni języka python, \textit{slicing} odbywa się za pomocą wprowadzeniu indeksów oraz dwukropka. Składania ta zapewnia też możliwość odczytywania ostatniej wartości za pomocą indeksu $-1$. W algorytmie \linebreak \ref{slice_example} przedstawiono sposób wykorzystania tej techniki.
 
 \begin{code}[H]
   \begin{minted}[
@@ -299,7 +299,7 @@ W języku Python występuje technika nazywająca się \textit{slicing}, pozwala 
           return Response(str(e), status=500)    
   \end{minted}
   \centering
-  \caption{Punkt końcowy aplikacji pozwalający na pobranie informacji o urządzeniach}
+  \caption{Pobranie informacji o urządzeniach}
   \label{slice_example}
 \end{code}
 
@@ -336,18 +336,18 @@ W algorytmie \ref{edit_post_fragment} przedstawiono sposób wykorzystania tej te
       except Exception as e:
           return Response(str(e), status=500)
   \end{minted}
-  \caption{Zapis posta w bazie danych}
+  \caption{Zapis edytowanego posta w bazie danych}
   \label{edit_post_fragment}
 \end{code}
 
-Dodatkowo w algorytmie \ref{edit_post_fragment} można zauważyć użycie biblioteki \textit{dataclasses}. Jest ona wykorzystywana do tworzenia klas, które reprezentują dane. W tym przypadku została wykorzystana do reprezentowania posta. Należy pamiętać, że obiektów klasy \textit{Post} nie można zapisać bezpośrednio w bazie danych. Należy skonwertować dany post do postaci słownika za pomocą metody \textit{asdict}. Jest to metoda pochodzą z biblioteki \textit{dataclasses}.
+Dodatkowo w algorytmie \ref{edit_post_fragment} można zauważyć użycie biblioteki \textit{dataclasses}. Jest ona wykorzystywana do tworzenia klas, które reprezentują dane. W tym przypadku została wykorzystana do reprezentowania posta. Należy pamiętać, że obiektów klasy \textit{Post} nie można zapisać bezpośrednio w bazie danych. Należy skonwertować dany post do postaci słownika za pomocą metody \textit{asdict}. Jest to metoda pochodząca z biblioteki \textit{dataclasses}.
 
 Wadą tego rozwiązania jest brak typów, które pozwoliły by na podpowiadanie w edytorze kodu. W celu zminimalizowania tego problemu, zastosowano adnotacje typów. Wydajność tego rozwiązania jest niewielka, ze względu na odczyt wszystkich postów użytkownika. Ta wydajność jest zależna od liczby postów użytkownika. 
 
 Dodatkowym usprawnieniem tego rozwiązania mogłoby być zastosowanie mechanizmu paginacji. Dzięki zastosowania tego usprawnienia zostanie zwiększona wydajność aplikacji. 
 
 \subsection{Dodawania postów}
-W celu dodania posta do bazy danych, należy skomunikować się z bazą oraz pobrać listę postów w celu jej modyfikacji. Tak samo jak w przypadku edycji posta, należy zdekodować token \textit{JWT}, aby uzyskać informacje o użytkowniku. Tak samo jak w przypadku edytowania posta, należy odczytać wszystkie posty użytkownika. Następnie należy dodać nowy post do listy postów użytkownika. Następnie należy zapisać listę postów użytkownika w bazie danych.
+W celu dodania posta do bazy danych, należy skomunikować się z bazą oraz pobrać listę postów w celu jej modyfikacji. Tak samo jak w przypadku edycji posta, należy zdekodować token \textit{JWT} |\ref{JWT}|, aby uzyskać informacje o użytkowniku. Tak samo jak w przypadku edytowania posta, należy odczytać wszystkie posty użytkownika. Następnie należy dodać nowy post do listy postów użytkownika. Następnie należy zapisać listę postów użytkownika w bazie danych.
 
 Również w tym przypadku zastosowano biblioteki \textit{dataclasses}, aby reprezentować posty. Dodatkowo, aby zadbać o integralność danych w bazie danych została zastosowano biblioteka \textit{uuid}. Posłużyła ona do generowania unikalnych identyfikatorów postów.
 
@@ -393,7 +393,7 @@ W algorytmie \ref{create_new_post_fragment} przedstawiono sposób dodawania post
 \end{code}
 
 \subsection{Usuwanie postów}
-W celu usunięcia posta z bazy danych, należy pobrać listę postów użytkownika oraz zmodyfikować, a następnie wysłać zapisaną listę postów użytkownika do bazy danych. Tak samo jak w przypadku dodawania bądź edycji należy pobrać informacje o użytkowniku. Uzyskane jest to poprzez zdekodowanie tokena \textit{JWT}. W ten sposób jesteśmy odczytać identyfikator użytkownika, co pozwala na odczytanie listy postów użytkownika.
+W celu usunięcia posta z bazy danych, należy pobrać listę postów użytkownika oraz zmodyfikować, a następnie wysłać zapisaną listę postów użytkownika do bazy danych. Tak samo jak w przypadku dodawania bądź edycji należy pobrać informacje o użytkowniku. Uzyskane jest to poprzez zdekodowanie tokena \textit{JWT} |\ref{JWT}|. W ten sposób możemy odczytać identyfikator użytkownika, co pozwala na odczytanie listy postów użytkownika.
 
 Po odczytaniu listy, należy znaleźć post o podanym identyfikatorze. Następnie należy usunąć post z listy postów użytkownika. Na samym końcu zapisujemy stan listy postów w bazie danych. W algorytmie \ref{delete_post_fragment} przedstawiono sposób usuwania posta z bazy danych.
 
@@ -465,7 +465,7 @@ W algorytmie \ref{upload_to_images_storage_fragment} przedstawiono sposób dodaw
 \subsection{Pobieranie informacji z GSM Arena API}
 Aby pobrać informacje o telefonie z serwisu \textit{GSM Arena API}, uzyskano to za pomocą biblioteki \textit{requests}. Jest to biblioteka, która umożliwia wysyłanie żądań HTTP na podany adres. W przypadku pobierania danych z internetu użyto metody \textit{GET}. W celu wysłania danych do serwisu znajdującego się w sieci, należy skorzystać z metody \textit{POST}.
 
-Zgodnie z dokumentacją \textit{GSM Arena API} \cite{gsm_arena_api_reference} występują tam dwie metody żądań: \textit{GET} oraz \textit{POST}. W przypadku pobierania informacji o telefonach wykorzystujemy metodę \textit{GET}. Dodatkowo przekazujemy funkcji ukazanej w algorytmie \ref{get_from_gsm_arena} parametry, które są wymagane przez serwis. W tych parametrach jest zawarta ścieżka, co pozwala na pobranie danych z odpowiedniego punktu końcowego \textit{GSM Arena API}.
+Zgodnie z dokumentacją \textit{GSM Arena API} \cite{gsm_arena_api_reference} występują tam dwie metody żądań: \textit{GET} oraz \textit{POST}. W przypadku pobierania informacji o telefonach wykorzystujemy metodę \textit{GET}. Dodatkowo przekazujemy w funkcji ukazanej w \linebreak algorytmie \ref{get_from_gsm_arena} parametry, które są wymagane przez serwis. W tych parametrach jest zawarta ścieżka, co pozwala na pobranie danych z odpowiedniego punktu końcowego \textit{GSM Arena API}.
 
 W algorytmie \ref{get_from_gsm_arena} przedstawiono sposób pobierania informacji z serwisu \textit{GSM Arena API}.
 
@@ -504,14 +504,14 @@ W algorytmie \ref{post_from_gsm_arena} przedstawiono sposób wysyłania informac
   \label{post_from_gsm_arena}
 \end{code}
 
-Należy nadmienić, że w przypadku tych dwóch funkcji, zwracana są nam dane w formie \textit{JSON} \ref{JSON}. Pozwala to na łatwe odczytanie danych, które są zwracane przez serwis.
+Należy nadmienić, że w przypadku tych dwóch funkcji, zwracane są nam dane w formie \textit{JSON} |\ref{JSON}|. Pozwala to na łatwe odczytanie danych, które są zwracane przez serwis.
 
 \subsection{Stworzenie funkcji wywoływanych okresowo}
 W trakcie pracy nad projektem zauważono, że występuje potrzeba zapisywania informacji o telefonach w bazie danych. Ta dodatkowa funkcjonalność została dodana ze względu na ograniczenia występujące w serwisie \textit{GSM Arena API}. Serwer ze względu na ograniczenia Google App Script \cite{google_app_script}, może wykonać tylko 50 zapytań. Zatem użytkownik jedynie wysyła zapytania do bazy o telefony.
 
-Zatem, aby telefony w bazie danych były aktualne, następuje zapisanie co godziny telefonów do bazy danych. W tym celu został zastosowany APScheduler \cite{flask_apscheduler}. Jest to biblioteka, która pozwala na wykonywanie zadań okresowo (\textit{cronjob}).
+Zatem, aby telefony w bazie danych były aktualne, następuje zapisanie co godzinę telefonów do bazy danych. W tym celu został zastosowany APScheduler \cite{flask_apscheduler}. Jest to biblioteka, która pozwala na wykonywanie zadań okresowo (\textit{cronjob}).
 
-Aby rozpocząć pracę z \textit{APScheduler} należy go skonfigurować oraz dodać zadania. W tym celu została stworzona funkcja, która specyfikuje interwał czasowy, w którym zadanie ma być wykonywane, identyfikator, czas, w którym powtarza wywołanie po nieudanej próbie wykonania zadania oraz typ zadania. Dodatkowo biblioteka ta integruje się z obiektem \textit{Flask}, co powoduje to, że APScheduler może wykonywać zadania w kontekście obiektu \textit{Flask}.
+Aby rozpocząć pracę z \textit{APScheduler}, należy go skonfigurować oraz dodać zadania. W tym celu została stworzona funkcja, która specyfikuje interwał czasowy, w którym zadanie ma być wykonywane, identyfikator, czas, w którym powtarza wywołanie po nieudanej próbie wykonania zadania oraz typ zadania. Dodatkowo biblioteka ta integruje się z obiektem \textit{Flask}, co powoduje to, że APScheduler może wykonywać zadania w kontekście obiektu \textit{Flask}.
 
 W algorytmie \ref{configure_apscheduler} przedstawiono sposób konfiguracji APScheduler.
 
@@ -570,7 +570,7 @@ W przypadku tej aplikacji, zadanie polega na pobraniu listy telefonów z serwisu
   \label{device_task}
 \end{code}
 
-W celu zminimalizowania ilości zapytań do \textit{GSM Arena API} została stworzona funkcja, która wysyła zapytanie o producentów do \textit{GSM Arena API}, a następnie producenci są zapisywani w bazie danych. W algorytmie \ref{brand_task} przedstawiono funkcji działającej okresowo.
+W celu zminimalizowania liczby zapytań do \textit{GSM Arena API} została stworzona funkcja, która wysyła zapytanie o producentów do \textit{GSM Arena API}, a następnie producenci są zapisywani w bazie danych. W algorytmie \ref{brand_task} przedstawiono kod funkcji działającej okresowo.
 
 \begin{code}[H]
   \begin{minted}[

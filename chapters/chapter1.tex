@@ -5,24 +5,24 @@ Dodatkowo mamy dużo miejsc, gdzie możemy uzyskać informacje na temat danej el
 
 Każdy sprzęt używany miał kiedyś swojego właściciela, który użytkował go na swój sposób. Ten sposób użytkowania telefonu wpływa bezpośrednio na komponenty telefonu. Aktualnie w technologii produkowania telefonów komórkowych można zauważyć trend w telefonach za składanymi ekranami. Każdy z tych ekranów posiada daną liczbę złożeń zanim przestanie się składać. Warto tutaj powrócić do recenzentów, którzy nie mogą  sprawdzić liczby złożeń. Powodów jest kilka: ograniczony czas wypożyczenia sprzętu, sprzęt także trafia od recenzenta do recenzenta, co powoduje, że te telefony są bardzo narażone na uszkodzenia. Do tego dochodzą jeszcze producenci, którzy mogą zmienić telefon pomiędzy recenzentami. Takie zachowanie powoduje, że konsument takiego sprzętu nie wie, jaka jest rzeczywista liczba możliwych złożeń.
 
-Jednym z rozwiązaniem na ten problem są fora internetowe lub grupy na portalach społecznościowych. Użytkownicy takich forów czy grup chętniej dzielą się problemami danego sprzętu. Natomiast żadna redakcja nie daje użytkownikom możliwości wypowiedzenia się na temat używania danego urządzenia. Nie występuje także możliwość wyceny danego używanego sprzętu, aby osoba sprzedająca dane urządzenia mogła usłyszeć proponowaną cenę według obiektywnego eksperta.
+Jednym z rozwiązaniem tego problemu są fora internetowe lub grupy na portalach społecznościowych. Użytkownicy takich forów czy grup chętniej dzielą się problemami danego sprzętu. Natomiast żadna redakcja nie daje użytkownikom możliwości wypowiedzenia się na temat używania danego urządzenia. Nie występuje także możliwość wyceny danego używanego sprzętu, aby osoba sprzedająca dane urządzenia mogła usłyszeć proponowaną cenę według obiektywnego eksperta.
 
 \section{Cel pracy}
-Celem niniejszej pracy jest opracowanie i implementacja aplikacji webowej, w oparciu o Flask i React, z użyciem Firebase \cite*{firebase}, Firestore \cite*{firestore} oraz Google Cloud Storage \cite*{cloud_storage}.
+Celem niniejszej pracy jest opracowanie i implementacja aplikacji webowej, w oparciu o Flask \cite{flask} i React \cite{React}, z utyciem Firebase \cite*{firebase}, Firestore \cite*{firestore} oraz Google Cloud Storage \cite*{cloud_storage} pozwalającej na przeglądanie danych technicznych telefonów komórkowych oraz dodatkowo umożliwiającej dodawania postów oraz komentarzy na forum.
 
 Aplikacja pozwala na przeglądanie danych technicznych telefonów komórkowych, dodatkowo umożliwia dodawania postów oraz komentarzy na forum. Strona posiada bazę producentów urządzeń, w ten sposób użytkownik posiada możliwość przeglądania urządzeń danego producenta. Użytkownik może na stronie porównać maksymalnie trzy urządzenia, znajdujące się w bazie danych.
 
 Na stronie zostało zbudowane forum, gdzie użytkownicy mogą dzielić się swoimi spostrzeżeniami w formie postów. Posty użytkownika będą udostępnione do edycji oraz usuwania. Każdy użytkownik posiada możliwość wystawienia oferty danego urządzenia. W przypadku wystawienia ogłoszenia, system udostępnia proponowane ceny dla urządzenia, którego dotyczy ogłoszenie.
 
 \section{Zakres pracy}
-Zakres pracy obejmuje zbudowanie aplikacji w oparciu o język Python \cite{python} i TypeScript \cite*{TypeScript}. Część backendowa została zbudowana przy użyciu biblioteki Flask \cite{flask}, natomiast część frontendowa powstała przy użyciu biblioteki React. W aplikacji została wykorzystana baza danych Firestore wraz z Google Cloud Store jako rozwiązanie do przechowywania obrazów. 
+Zakres pracy obejmuje zbudowanie aplikacji w oparciu o język Python \cite{python} i TypeScript \cite*{TypeScript}. Część backendowa została zbudowana przy użyciu biblioteki Flask \cite{flask}, natomiast część frontendowa powstała przy użyciu biblioteki React \cite{React}. W aplikacji została wykorzystana baza danych Firestore wraz z Google Cloud Store jako rozwiązanie do przechowywania obrazów. 
 
 \section{Układ pracy}
 W tej sekcji znajduje się opis poszczególnych rozdziałów:
 \begin{enumerate}
   \item Wstęp - w tym rozdziale znajduje się wstęp do problematyki wraz z celem oraz zakresem pracy.
-  \item Przegląd rozwiązań - w tym rozdziale znajdują się występujące obecnie na rynku rozwiązania wraz z opisem ich zalet i wad. W tym rozdziale znajduje się także rozwiązanie autora.
+  \item Przegląd rozwiązań - w tym rozdziale znajdują się występujące obecnie na rynku rozwiązania wraz z opisem ich zalet i wad. W tym rozdziale znajdują się również założenia dla rozwiązania autora.
   \item Projekt aplikacji - w tym rozdziale znajduje się opis projektu aplikacji wraz z opisem wykorzystanych technologii.
-  \item Testowanie aplikacji - w tym rozdziale znajdują się testy aplikacji wraz z opisem wykorzystanych narzędzi.
-  \item Podsumowanie i wnioski - w tym rozdziale znajdują się podsumowania oraz wnioski z pracy. Zamieszczono tam również propozycje rozwoju aplikacji.
+  \item Aplikacja - Rate my phone - w tym rozdziale znajduje się opis użycia aplikacji oraz opis implementacji wybranych miejsc.
+  \item Podsumowanie - w tym rozdziale znajdują się podsumowania oraz wnioski z pracy. Zamieszczono tam również propozycje rozwoju aplikacji.
 \end{enumerate}
