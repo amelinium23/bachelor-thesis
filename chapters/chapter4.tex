@@ -41,7 +41,7 @@ Na rysunku \ref{login_success} przedstawiono przykład poprawnego przekierowania
 \end{figure}
 Dodatkowo jeżeli użytkownik posiada zdjęcie profilowe, jest ono wyświetlane w prawym górnym rogu strony. Do zdjęcia jest również dodany przycisk, który pozwala na przejście do profilu użytkownika.
 
-W przypadku rejestracji jeżeli użytkownik wpisze poprawne, dane zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego.
+W przypadku rejestracji jeżeli użytkownik wpisze poprawne dane, zostaje przeniesiony na stronę rejestracji. Ta strona zawiera także dodatkowe informacje, które użytkownik może wprowadzić. Są to informację na temat nazwy użytkownika oraz zdjęcia profilowego.
 
 Na rysunku \ref{register_page} przedstawiono formularz rejestracji.
 \begin{figure}[H]
@@ -183,7 +183,7 @@ Użytkownik także posiada edytowanie używanego przez siebie urządzenia. Aby z
   \caption{Strona edycji urządzenia}
   \label{edit_phone}
 \end{figure}
-Po pomyślnej zmianie urządzenia na stronie, pojawia się powiadomienie o pomyślnej zmianie urządzenia rysunek \ref{edit_phone_success}.
+Po pomyślnej zmianie urządzenia na stronie, pojawia się powiadomienie o pomyślnej zmianie urządzenia - rysunek \ref{edit_phone_success}.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.44]{tests/edit-profile/updated-user-device.png}
@@ -231,7 +231,7 @@ Po wybraniu urządzenia użytkownik może porównać wybrane urządzenia. Inform
 W tej sekcji znajdują się opisy implementacji wybranych miejsc aplikacji.
 
 \subsection{Pobieranie informacji do porównania}
-Aby pobrać informacje o telefonach wykorzystuje statyczną metodę występującą w JavaScript. Ta statyczna metoda nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie jednocześnie kilku zapytań asynchronicznych. Pozwala to na szybsze pobieranie informacji o urządzeniach. W ten sposób czekamy na wszystkie zapytania jednocześnie, co zmniejsza czas oczekiwania na dane. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
+Aby pobrać informacje o telefonach wykorzystuje się statyczną metodę występującą w JavaScript. Ta statyczna metoda nazywa się \textit{Promise.all}. Metoda ta pozwala na wykonanie jednocześnie kilku zapytań asynchronicznych. Pozwala to na szybsze pobieranie informacji o urządzeniach. W ten sposób czekamy na wszystkie zapytania jednocześnie, co zmniejsza czas oczekiwania na dane. Te dane są zwracane w formie tablicy. W algorytmie \ref{getting_devices} przedstawiono zastosowanie metody \textit{Promise.all}.
 
 \begin{code}[H]
   \begin{minted}[
@@ -262,7 +262,7 @@ Poprzez wykorzystanie języka TypeScript można było zdefiniować dokładnie ja
 \subsection{Pobieranie informacji o urządzeniach}
 W bazie danych znajduje się około 3500 telefonów. Załadowanie takiej ilości danych na stronie powoduje długi czas ładowania strony. Aby zredukować czas ładowania strony, zastosowano technikę \textit{Lazy Loading}. Pozwala ona na podzielenie danych na mniejsze fragmenty, co przekłada się na krótszy czas oczekiwania na nie. W ten sposób zwiększa się wydajność aplikacji.
 
-W języku Python występuje technika nazywająca się \textit{slicing}, pozwala ona wydzielić z danej listy danych ich część. Dzięki składni języka python, \textit{slicing} odbywa się za pomocą wprowadzeniu indeksów oraz dwukropka. Składania ta zapewnia też możliwość odczytywania ostatniej wartości za pomocą indeksu $-1$. W algorytmie \linebreak \ref{slice_example} przedstawiono sposób wykorzystania tej techniki.
+W języku Python występuje technika nazywająca się \textit{slicing}, pozwala ona wydzielić z danej listy danych ich część. Dzięki składni języka Python \cite{python}, \textit{slicing} odbywa się za pomocą wprowadzeniu indeksów oraz dwukropka. Składania ta zapewnia też możliwość odczytywania ostatniej wartości za pomocą indeksu $-1$.\linebreak W algorytmie \ref{slice_example} przedstawiono sposób wykorzystania tej techniki.
 
 \begin{code}[H]
   \begin{minted}[
